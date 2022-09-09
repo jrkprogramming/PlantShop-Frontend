@@ -6,7 +6,7 @@ const Header = () => {
     <div>
         
         <header>
-          Plant Shop
+          <Link to='/products'>Plant Shop</Link>
           <Link to='/cart'>Cart</Link>
           <Link to='/login'>Login</Link>
 

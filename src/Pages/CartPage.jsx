@@ -1,12 +1,13 @@
 import React, {useEffect} from 'react'
-import {Link, useParams, useLocation} from 'react-router-dom'
+import {Link, useParams, useLocation, useNavigate} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
-import { addToCart } from '../Actions/cartActions'
+import { addToCart, removeFromCart } from '../Actions/cartActions'
 
 const CartPage = ({match, history}) => {
 
     let location = useLocation()
     let {id} = useParams()
+    let navigate = useNavigate()
 
     const productId = id
     const qty = location.search ? Number(location.search.split('=')[1]) : 1
@@ -28,7 +29,11 @@ const CartPage = ({match, history}) => {
     }, [dispatch, productId, qty])
 
     const removeFromCartHandler = (id) => {
-        console.log('remove:', id)
+        dispatch(removeFromCart(id))
+    }
+
+    const checkoutHandler = () => {
+        navigate('/login?redirect=shipping')
     }
 
   return (
@@ -38,6 +43,8 @@ const CartPage = ({match, history}) => {
 
         <h2>Subtotal: ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items</h2> 
         ${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}
+        <br></br>
+        <button type="button" onClick={checkoutHandler}>CHECKOUT</button>
 
         <br></br><br></br><br></br>
 
