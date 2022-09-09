@@ -6,9 +6,10 @@ const Product = ({product}) => {
     <div>
         
         <div>
-            <Link to={`/products/${product.id}`}/>
+            <Link to={`/products/${product.id}`}>{product.name}</Link>
+            Price: ${product.price}
             <img src={product.image} alt={product.name} />
-            <strong>{product.name}</strong>
+            
         </div>
 
     </div>

@@ -4,7 +4,11 @@ const Footer = () => {
   return (
     <div>
         
-        <footer>Footer</footer>
+        <footer>
+          
+          Copyright 2022
+
+        </footer>
 
     </div>
   )
