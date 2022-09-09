@@ -63,8 +63,8 @@ const CartPage = ({match, history}) => {
                     <Link to={`/products/${item.product}`}>{item.name}</Link>
                     ${item.price}
 
-                    <form value={item.qty} onChange={(e) => dispatch(addToCart(item.product, Number(e.target.value)))}>
-                        <select>
+                    <form onChange={(e) => dispatch(addToCart(item.product, Number(e.target.value)))}>
+                        <select value={item.qty}>
                         {
                             [...Array(item.quantity).keys()].map((x) => (
                                 <option key={x+1} value={x+1}>
