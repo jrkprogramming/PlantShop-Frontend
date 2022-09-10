@@ -11,21 +11,18 @@ const CartPage = () => {
     const dispatch = useDispatch()
 
     const plantId = id
-    const qty = location.search ? Number(location.search.split('=')[1]) : 1
-    // console.log('qty:', qty)
-    // console.log(plantId)
+    const cartQty = location.search ? Number(location.search.split('=')[1]) : 1
 
     const cart = useSelector(state => state.cart)
     const {cartItems} = cart
-    // console.log('cartItems', cartItems)
 
     useEffect(()=> {
         if (plantId) {
-            dispatch(addToCart(plantId, qty))
+            dispatch(addToCart(plantId, cartQty))
         }
         // Adds plants to localstorage
-        // quantity is totalQuantity
-    }, [dispatch, plantId, qty])
+        // quantity is totalQuantity, cartQty is how many in the cart
+    }, [dispatch, plantId, cartQty])
 
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id))
@@ -40,8 +37,8 @@ const CartPage = () => {
         
         <h1> Shopping Cart </h1>
 
-        <h2>Subtotal: ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items</h2> 
-        ${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}
+        <h2>Subtotal: ({cartItems.reduce((acc, item) => acc + item.cartQty, 0)}) items</h2> 
+        ${cartItems.reduce((acc, item) => acc + item.cartQty * item.price, 0).toFixed(2)}
         <br></br>
         <button type="button" onClick={checkoutHandler}>CHECKOUT</button>
 
@@ -57,12 +54,13 @@ const CartPage = () => {
             {cartItems.map(item => (
                 <li key={item.plant}>
 
-                    <img src={item.image} alt={item.name}></img>
                     <Link to={`/plants/${item.plant}`}>{item.name}</Link>
                     ${item.price}
+                    <br></br>
+                    <img src={item.image} alt={item.name}></img>
 
                     <form onChange={(e) => dispatch(addToCart(item.plant, Number(e.target.value)))}>
-                        <select value={item.qty}>
+                        <select value={item.cartQty}>
                         {
                             [...Array(item.quantity).keys()].map((x) => (
                                 <option key={x+1} value={x+1}>
@@ -79,7 +77,6 @@ const CartPage = () => {
             ))}
             </div>
         )}
-
     </div>
   )
 }

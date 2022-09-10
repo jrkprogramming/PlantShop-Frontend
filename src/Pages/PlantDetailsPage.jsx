@@ -25,25 +25,29 @@ const PlantDetailsPage = () => {
 
     const addToCartHandler = () => {
         // console.log('Add to Cart:', id)
-        navigate(`/cart/${id}?qty=${quantity}`)
+        navigate(`/cart/${id}?cartQty=${quantity}`)
     }
 
   return (
     <div>
 
         <Link to='/plants'>Go Back</Link>
-
+        <br></br>                <br></br>                <br></br>
         <div>
-             {plant.name} 
-                Price: ${plant.price}
+            {plant.name} 
                 <br></br>
-                {plant.quantity > 0 ? 'In Stock' : 'Out of Stock'} 
+            Price: ${plant.price}
                 <br></br>
-                <img src={plant.image} alt={plant.name} />
+            {plant.quantity > 0 ? 'In Stock' : 'Out of Stock'} 
                 <br></br>
-                Qty: {plant.quantity > 0 && (
-                    <form value={quantity} onChange={(e) => setQuantity(e.target.value)}>
-                        <select>
+            Description:
+            {plant.description}
+                <br></br>
+            <img src={plant.image} alt={plant.name} />
+                <br></br>
+            {plant.quantity > 0 && (
+                <form value={quantity} onChange={(e) => setQuantity(e.target.value)}>
+                   Qty: <select>
                         {
                             [...Array(plant.quantity).keys()].map((x) => (
                                 <option key={x+1} value={x+1}>{x+1}</option>
@@ -52,7 +56,7 @@ const PlantDetailsPage = () => {
                         </select>
                         {plant.quantity > 0 ? <button onClick={addToCartHandler} type="button">ADD TO CART</button> : null}
                     </form>
-                )} 
+            )} 
         </div>
     </div>
   )

@@ -16,7 +16,7 @@ const HomePage = () => {
     }, [dispatch])
   
     return (
-    <div>
+        <div>
             <div>
                 {plants.map(plant => (
                 <p>
@@ -24,7 +24,7 @@ const HomePage = () => {
                 </p>
                 ))}
             </div>
-    </div>
+        </div>
   )
 }
 

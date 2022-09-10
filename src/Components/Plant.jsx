@@ -8,7 +8,6 @@ const Plant = ({plant}) => {
             Price: ${plant.price}
             <img src={plant.image} alt={plant.name}/>  
         </div>
-
   )
 }
 
