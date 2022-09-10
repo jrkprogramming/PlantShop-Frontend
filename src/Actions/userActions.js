@@ -21,6 +21,11 @@ export const login = (email, password) => async (dispatch) => {
         type: 'USER_LOGIN',
         payload: data
     })
-    
+
     localStorage.setItem('userInfo', JSON.stringify(data))
+}
+
+export const logout = () => (dispatch) => {
+    localStorage.removeItem('userInfo')
+    dispatch({type: 'USER_LOGOUT'})
 }

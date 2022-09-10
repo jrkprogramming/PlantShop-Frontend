@@ -11,3 +11,17 @@ export const userLoginReducer = (state = {}, action) => {
             return state
     }
 }
+
+export const userSignupReducer = (state = {}, action) => {
+    switch (action.type) {
+
+        case 'USER_SIGNUP':
+            return {userInfo: action.payload}
+
+        case 'USER_LOGOUT':
+            return {}
+
+        default:
+            return state
+    }
+}
