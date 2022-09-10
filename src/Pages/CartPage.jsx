@@ -3,30 +3,29 @@ import {Link, useParams, useLocation, useNavigate} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import { addToCart, removeFromCart } from '../Actions/cartActions'
 
-const CartPage = ({match, history}) => {
+const CartPage = () => {
 
-    let location = useLocation()
     let {id} = useParams()
+    let location = useLocation()
     let navigate = useNavigate()
-
-    const productId = id
-    const qty = location.search ? Number(location.search.split('=')[1]) : 1
-    console.log('qty:', qty)
-    console.log(productId)
-
     const dispatch = useDispatch()
+
+    const plantId = id
+    const qty = location.search ? Number(location.search.split('=')[1]) : 1
+    // console.log('qty:', qty)
+    // console.log(plantId)
 
     const cart = useSelector(state => state.cart)
     const {cartItems} = cart
-    console.log('cartItems', cartItems)
+    // console.log('cartItems', cartItems)
 
     useEffect(()=> {
-        if (productId) {
-            dispatch(addToCart(productId, qty))
+        if (plantId) {
+            dispatch(addToCart(plantId, qty))
         }
-        // Adds products to localstorage
+        // Adds plants to localstorage
         // quantity is totalQuantity
-    }, [dispatch, productId, qty])
+    }, [dispatch, plantId, qty])
 
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id))
@@ -48,22 +47,21 @@ const CartPage = ({match, history}) => {
 
         <br></br><br></br><br></br>
 
-
         {cartItems.length === 0 ? (
             <div>
             <h3>There is currently nothing in your cart!</h3>
-            <Link to='/products'>Go Back</Link>
+            <Link to='/plants'>Go Back</Link>
             </div>
         ): (
             <div>
             {cartItems.map(item => (
-                <li key={item.product}>
+                <li key={item.plant}>
 
                     <img src={item.image} alt={item.name}></img>
-                    <Link to={`/products/${item.product}`}>{item.name}</Link>
+                    <Link to={`/plants/${item.plant}`}>{item.name}</Link>
                     ${item.price}
 
-                    <form onChange={(e) => dispatch(addToCart(item.product, Number(e.target.value)))}>
+                    <form onChange={(e) => dispatch(addToCart(item.plant, Number(e.target.value)))}>
                         <select value={item.qty}>
                         {
                             [...Array(item.quantity).keys()].map((x) => (
@@ -75,7 +73,7 @@ const CartPage = ({match, history}) => {
                         </select>
                     </form>
 
-                    <button type='button' onClick={()=> removeFromCartHandler(item.product)}>REMOVE</button>
+                    <button type='button' onClick={()=> removeFromCartHandler(item.plant)}>REMOVE</button>
 
                 </li>
             ))}

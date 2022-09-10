@@ -1,39 +1,29 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {listProducts} from '../Actions/productActions'
-import Product from '../Components/Product'
+import {listPlants} from '../Actions/plantActions'
+import Plant from '../Components/Plant'
 
 
 const HomePage = () => {
 
     const dispatch = useDispatch()
-    const productList = useSelector(state=>state.productList)
-    const {error, loading, products} = productList
+    const plantList = useSelector(state=>state.plantList)
+    const {plants} = plantList
 
     useEffect(() => {
-
-        dispatch(listProducts())
-
+        dispatch(listPlants())
     }, [dispatch])
-  
   
     return (
     <div>
-
-        {loading ? <h2>Loading...</h2>
-            : error ? <h3>{error}</h3>
-            : <div>
-                {products.map(product => (
+            <div>
+                {plants.map(plant => (
                 <p>
-                    <Product product={product}></Product>
+                    <Plant plant={plant}></Plant>
                 </p>
-        ))}</div>
-        }
-        
-
-
-
+                ))}
+            </div>
     </div>
   )
 }
