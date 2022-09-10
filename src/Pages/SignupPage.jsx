@@ -31,11 +31,11 @@ const SignupPage = () => {
     
         const handleSubmit = (e) => {
             e.preventDefault()
-            // if(password !== confirmPassword) {
-            //     setMessage('Passwords Do Not Match')
-            // } else {
+            if(password !== confirmPassword) {
+                setMessage('Passwords Do Not Match')
+            } else {
                 dispatch(signup(username, email, first_name, last_name, password))
-            // }
+            }
         }
 
 

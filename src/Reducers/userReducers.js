@@ -32,6 +32,26 @@ export const userDetailsReducer = (state = {user:{}}, action) => {
 
         case 'USER_DETAILS':
             return {user: action.payload}
+        
+        case 'USER_DETAILS_RESET':
+            return {user: {}}
+
+        default:
+            return state
+    }
+}
+
+
+
+
+export const userEditReducer = (state = {}, action) => {
+    switch (action.type) {
+
+        case 'USER_EDIT':
+            return {success: true, userInfo: action.payload}
+
+        case 'USER_RESET':
+            return {}
 
         default:
             return state

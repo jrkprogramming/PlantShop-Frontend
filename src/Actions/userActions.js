@@ -26,6 +26,7 @@ export const login = (username, password) => async (dispatch) => {
 export const logout = () => (dispatch) => {
     localStorage.removeItem('userInfo')
     dispatch({type: 'USER_LOGOUT'})
+    dispatch({type: 'USER_DETAILS_RESET'})
 }
 
 
@@ -66,7 +67,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
     const config = {
         headers:{
             'Content-type' : 'application/json',
-            Authorization: `Bearer userInfo.token`
+            Authorization: `Bearer ${userInfo.token}`
         }
     }
 
@@ -79,4 +80,37 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
         type: 'USER_DETAILS',
         payload: data
     })
+}
+
+export const editUserInfo = (user) => async (dispatch, getState) => {
+
+    const { 
+        userLogin: {userInfo}
+    } = getState()
+
+
+    const config = {
+        headers:{
+            'Content-type' : 'application/json',
+            Authorization: `Bearer ${userInfo.token}`
+        }
+    }
+
+    const {data} = await axios.put(
+        `/users/profile/edit/`,
+        user,
+        config
+        )
+        
+    dispatch({
+        type: 'USER_EDIT',
+        payload: data
+    })
+
+    dispatch({
+        type: 'USER_LOGIN',
+        payload: data
+    })
+
+    localStorage.setItem('userInfo', JSON.stringify(data))
 }
