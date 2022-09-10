@@ -12,16 +12,16 @@ const LoginPage = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
-    const redirect = location.search ? location.search.split('=')[1] : '/plants'
+    // const redirect = location.search ? location.search.split('=')[1] : '/'
 
     const userLogin = useSelector(state => state.userLogin)
     const {userInfo, error} = userLogin
 
     useEffect(() => {
         if(userInfo) {
-            navigate(redirect)
+            navigate('/plants')
         }
-    },[userInfo, redirect, navigate])
+    },[userInfo, navigate])
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -39,12 +39,12 @@ const LoginPage = () => {
         Password:
         <input type="password" name="password" value={password} onChange={(e) => {setPassword(e.target.value)}}></input>
 
-        <button type="submit" name="">SIGN IN</button>
+        <button type="submit">SIGN IN</button>
     </form>
 
         <br></br>
 
-        Don't have an account? <Link to={redirect ? `/users/signup?redirect=${redirect}` : '/users/signup'}>Register</Link>
+        Don't have an account? <Link to={'/users/signup'}>Register</Link>
 
     </div>
   )

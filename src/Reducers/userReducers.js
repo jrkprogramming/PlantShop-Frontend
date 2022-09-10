@@ -25,3 +25,15 @@ export const userSignupReducer = (state = {}, action) => {
             return state
     }
 }
+
+
+export const userDetailsReducer = (state = {user:{}}, action) => {
+    switch (action.type) {
+
+        case 'USER_DETAILS':
+            return {user: action.payload}
+
+        default:
+            return state
+    }
+}

@@ -5,6 +5,7 @@ import HomePage from './Pages/HomePage'
 import ProductDetailsPage from './Pages/PlantDetailsPage'
 import CartPage from './Pages/CartPage'
 import LoginPage from './Pages/LoginPage'
+import SignupPage from './Pages/SignupPage'
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
 
         <Routes>
           <Route path='/plants' element={<HomePage/>}></Route>
-          <Route path='/login' element={<LoginPage/>}></Route>
+          <Route path='/users/login' element={<LoginPage/>}></Route>
+          <Route path='/users/signup' element={<SignupPage/>}></Route>
           <Route path='/plants/:id' element={<ProductDetailsPage />}></Route>
           <Route path="/cart">
             <Route index element={<CartPage />} />

@@ -25,7 +25,7 @@ const Navbar = () => {
               <button onClick={logoutHandler}>Logout</button>
             </a>
             ):
-            <Link to='/login'>Login</Link>
+            <Link to='/users/login'>Login</Link>
             }
         </nav>
   )
