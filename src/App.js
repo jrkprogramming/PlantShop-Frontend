@@ -9,6 +9,8 @@ import LoginPage from './Pages/LoginPage'
 import SignupPage from './Pages/SignupPage'
 import ProfilePage from './Pages/ProfilePage'
 import ShippingPage from './Pages/ShippingPage'
+import PaymentPage from './Pages/PaymentPage'
+import PlaceOrderPage from './Pages/PlaceOrderPage'
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
             <Route path=":id" element={<CartPage />} />
           </Route>
           <Route path='/shipping' element={<ShippingPage />}></Route>
+          <Route path='/payment' element={<PaymentPage />}></Route>
+          <Route path='/placeorder' element={<PlaceOrderPage />}></Route>
         </Routes>
         
     </div>
