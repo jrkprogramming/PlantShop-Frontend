@@ -8,6 +8,7 @@ import CartPage from './Pages/CartPage'
 import LoginPage from './Pages/LoginPage'
 import SignupPage from './Pages/SignupPage'
 import ProfilePage from './Pages/ProfilePage'
+import ShippingPage from './Pages/ShippingPage'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route index element={<CartPage />} />
             <Route path=":id" element={<CartPage />} />
           </Route>
+          <Route path='/shipping' element={<ShippingPage />}></Route>
         </Routes>
         
     </div>

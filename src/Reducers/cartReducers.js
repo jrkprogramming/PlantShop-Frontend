@@ -3,7 +3,7 @@
 
 
 
-export const cartReducer = (state={cartItems:[]}, action) => {
+export const cartReducer = (state={cartItems:[], shippingAddress: {}}, action) => {
 
     switch(action.type)  {
         case 'CART_ADD_ITEM':
@@ -27,6 +27,12 @@ export const cartReducer = (state={cartItems:[]}, action) => {
                 return {
                     // action.payload is the id of the plant that we want to remove 
                     ...state, cartItems: state.cartItems.filter(x=> x.plant !== action.payload)
+                }
+
+            case 'CART_SHIPPING_ADDRESS':
+                return {
+                    ...state, 
+                    shippingAddress: action.payload
                 }
 
         default:

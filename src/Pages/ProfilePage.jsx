@@ -56,6 +56,7 @@ const ProfilePage = () => {
                 'password': password,
             }))
         }
+        navigate('/plants')
     }
 
 
