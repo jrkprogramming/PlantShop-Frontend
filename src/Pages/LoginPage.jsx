@@ -48,7 +48,7 @@ const LoginPage = () => {
 
     // </div>
 
-<div class="flexp-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 justify-center m-auto">
+<div class="flexp-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 justify-center m-auto mt-96">
 <form class="space-y-6" onSubmit={submitHandler}>
     <h5 class="text-xl font-medium text-gray-900 dark:text-white">Welcome!</h5>
     <div>
@@ -72,7 +72,7 @@ const LoginPage = () => {
     </div>
     <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</button>
     <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
-        Not registered? <a href="/users/signup" class="text-blue-700 hover:underline dark:text-blue-500">Create account</a>
+        Not registered? <a href="/users/signup" class="text-blue-700 hover:underline dark:text-blue-500">Create Account</a>
     </div>
 </form>
 </div>

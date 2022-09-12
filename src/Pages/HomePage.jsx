@@ -16,15 +16,13 @@ const HomePage = () => {
     }, [dispatch])
   
     return (
-        <div>
-            <div className="flex flex-row justify-center p-10 space-x-10 space--10 ">
+            <div className="flex flex-wrap p-10 justify-center">
                 {plants.map(plant => (
                 <p>
                     <Plant plant={plant}></Plant>
                 </p>
                 ))}
             </div>
-        </div>
   )
 }
 

@@ -24,38 +24,47 @@ const PlantDetailsPage = () => {
     }, [dispatch, id])
 
     const addToCartHandler = () => {
-        // console.log('Add to Cart:', id)
         navigate(`/cart/${id}?cartQty=${quantity}`)
     }
 
   return (
-    <div>
+    <div className="  p-10 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
 
-        <Link to='/plants'>Go Back</Link>
+        <a href={`/plants/`} class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> GO BACK
+
+    </a>
+
+
         <br></br>                <br></br>                <br></br>
-        <div>
-            {plant.name} 
+
+
+        <div className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            <h1>{plant.name} </h1>
                 <br></br>
             Price: ${plant.price}
-                <br></br>
+            <br></br>
             {plant.quantity > 0 ? 'In Stock' : 'Out of Stock'} 
-                <br></br>
-            Description:
+                <br></br><br></br>
             {plant.description}
                 <br></br>
-            <img src={plant.image} alt={plant.name} />
+
+            <div>
+                <img src={plant.image} alt={plant.name} />
+            </div>
+
                 <br></br>
             {plant.quantity > 0 && (
-                <form value={quantity} onChange={(e) => setQuantity(e.target.value)}>
-                   Qty: <select>
+                <form value={quantity} onChange={(e) => setQuantity(e.target.value)} className="px-5">
+                   Qty: <select className="inline-flex items-center py-1 px-2 text-sm font-medium text-center text-black focus:ring-4 focus:outline-none focus:ring-blue-300  mr-5">
                         {
                             [...Array(plant.quantity).keys()].map((x) => (
                                 <option key={x+1} value={x+1}>{x+1}</option>
                             ))
                         }
                         </select>
-                        {plant.quantity > 0 ? <button onClick={addToCartHandler} type="button">ADD TO CART</button> : null}
+                        {plant.quantity > 0 ? <button onClick={addToCartHandler} type="button" className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">ADD TO CART</button> : null}
                     </form>
+
             )} 
         </div>
     </div>
