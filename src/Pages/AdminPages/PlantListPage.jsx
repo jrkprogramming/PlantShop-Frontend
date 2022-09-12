@@ -1,17 +1,18 @@
 import React, {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {listPlants} from '../../Actions/plantActions'
+import {Link, useLocation, useNavigate} from 'react-router-dom'
+import {listPlants, deletePlant} from '../../Actions/plantActions'
 
 const PlantListPage = () => {
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const plantList = useSelector(state => state.plantList)
   const {plants, error, pages, page} = plantList
 
-  // const plantDelete = useSelector(state => state.plantDelete)
-  // const {success: successDelete, error: errorDelete} = plantDelete
+  const plantDelete = useSelector(state => state.plantDelete)
+  const {success: successDelete, error: errorDelete} = plantDelete
 
   // const plantCreate = useSelector(state => state.plantCreate)
   // const {plant: createdPlant, success: successCreate, error: errorCreate} = plantCreate
@@ -21,11 +22,13 @@ const PlantListPage = () => {
 
   useEffect(() => {
     dispatch(listPlants())
-}, [dispatch])
+}, [dispatch, plantDelete])
 
   const handleDelete = (id) => {
     if (window.confirm('Are you sure you want to delete this plant?')) {
-      // Delete plants
+      dispatch(deletePlant(id))
+    } else {
+      navigate('/users/login')
     }
   }
 
@@ -39,6 +42,8 @@ const PlantListPage = () => {
         <h1>List of Plants</h1>
 
         <button onClick={handleCreatePlant}>ADD PLANT TO LIST</button>
+
+        {errorDelete && <p>{errorDelete}</p>}
 
           {plants.map(plant => (
             <div>

@@ -20,3 +20,27 @@ export const listPlantDetails = (id) => async (dispatch) => {
         })
 
 }
+
+export const deletePlant = (id) => async (dispatch, getState) => {
+
+    const {
+        userLogin: {userInfo},
+    } = getState();
+
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${userInfo.token}`
+        }
+    }
+
+    const {data} = await axios.delete(
+        `/plants/delete/${id}`,
+        config
+        )
+
+    dispatch({
+        type: 'PLANT_DELETE',
+        payload: data
+    })
+}

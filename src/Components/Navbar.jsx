@@ -27,6 +27,8 @@ const Navbar = () => {
             ):
             <Link to='/users/login'>Login</Link>
             }
+
+          <Link to='/admin/plantList'>Admin List for Plants</Link>
         </nav>
   )
 }

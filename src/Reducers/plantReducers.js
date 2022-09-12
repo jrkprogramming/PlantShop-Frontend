@@ -20,3 +20,14 @@ export const plantDetailsReducer = (state = {plant:[]}, action) => {
             return state
     }
 }
+
+export const plantDeleteReducer = (state = {}, action) => {
+    switch (action.type) {
+
+        case 'PLANT_DELETE':
+            return {success: true}
+
+        default:
+            return state
+    }
+}
