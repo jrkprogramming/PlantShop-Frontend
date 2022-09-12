@@ -27,6 +27,8 @@ export const logout = () => (dispatch) => {
     localStorage.removeItem('userInfo')
     dispatch({type: 'USER_LOGOUT'})
     dispatch({type: 'USER_DETAILS_RESET'})
+
+    dispatch({type: 'USER_LIST_LOGOUT'})
 }
 
 
@@ -113,4 +115,30 @@ export const editUserInfo = (user) => async (dispatch, getState) => {
     })
 
     localStorage.setItem('userInfo', JSON.stringify(data))
+}
+
+
+export const listUsers = () => async (dispatch, getState) => {
+
+    const { 
+        userLogin: {userInfo}
+    } = getState()
+
+
+    const config = {
+        headers:{
+            'Content-type' : 'application/json',
+            Authorization: `Bearer ${userInfo.token}`
+        }
+    }
+
+    const {data} = await axios.get(
+        `/users/`,
+        config
+        )
+        
+    dispatch({
+        type: 'USER_LIST',
+        payload: data
+    })
 }

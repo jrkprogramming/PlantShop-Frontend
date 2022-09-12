@@ -1,8 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link, useNavigate, useLocation} from 'react-router-dom'
-
+import {orderCreate} from '../Actions/orderActions'
+ 
 const PlaceOrderPage = () => {
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const createOrder = useSelector(state => state.createOrder)
+    const {order, error, success} = createOrder
 
     const cart = useSelector(state => state.cart)
 
@@ -15,9 +22,28 @@ const PlaceOrderPage = () => {
 
     cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2)
 
+    if(!cart.paymentMethod) {
+        navigate('/payment')
+    }
+
+
+    useEffect(() => {
+        if(success){
+            navigate(`/orders/${order.id}`)
+        }
+    }, [success, navigate])
+
     
     const placeOrder = () => {
-        console.log('Placed Order')
+        dispatch(orderCreate({
+            orderItems: cart.cartItems,
+            shippingAddress: cart.shippingAddress,
+            paymentMethod: cart.paymentMethod,
+            itemsPrice: cart.itemsPrice,
+            shippingPrice: cart.shippingPrice,
+            taxPrice: cart.taxPrice,
+            totalPrice: cart.totalPrice,
+        }))
     }
 
   return (
@@ -62,6 +88,10 @@ const PlaceOrderPage = () => {
             Total: 
             ${cart.totalPrice}
 
+        </div>
+
+        <div>
+            {error && <p>{error}</p>}
         </div>
 
         {cart.cartItems === 0 ? null : <button type="button" onClick={placeOrder}>Place Order</button>}
