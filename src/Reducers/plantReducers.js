@@ -31,3 +31,18 @@ export const plantDeleteReducer = (state = {}, action) => {
             return state
     }
 }
+
+
+export const plantCreateReducer = (state = {}, action) => {
+    switch (action.type) {
+
+        case 'PLANT_CREATE':
+            return {success:true, plant:action.payload}
+
+        case 'PLANT_CREATE_RESET':
+            return {}
+        
+        default:
+            return state
+    }
+}

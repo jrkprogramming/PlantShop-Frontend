@@ -17,7 +17,7 @@ const HomePage = () => {
   
     return (
         <div>
-            <div>
+            <div className="flex flex-row justify-center p-10 space-x-10 space--10 ">
                 {plants.map(plant => (
                 <p>
                     <Plant plant={plant}></Plant>

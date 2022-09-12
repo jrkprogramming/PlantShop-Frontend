@@ -11,8 +11,7 @@ import ProfilePage from './Pages/ProfilePage'
 import ShippingPage from './Pages/ShippingPage'
 import PaymentPage from './Pages/PaymentPage'
 import PlaceOrderPage from './Pages/PlaceOrderPage'
-
-// import UserListPage from './Pages/UserListPage'
+import LandingPage from './Pages/LandingPage'
 import PlantListPage from './Pages/AdminPages/PlantListPage'
 
 function App() {
@@ -21,6 +20,7 @@ function App() {
       <Navbar></Navbar>
 
         <Routes>
+        <Route path='/' element={<LandingPage/>}></Route>
           <Route path='/plants' element={<HomePage/>}></Route>
           <Route path='/users/login' element={<LoginPage/>}></Route>
           <Route path='/users/signup' element={<SignupPage/>}></Route>

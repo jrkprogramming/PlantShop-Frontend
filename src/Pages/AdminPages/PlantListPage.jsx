@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link, useLocation, useNavigate} from 'react-router-dom'
-import {listPlants, deletePlant} from '../../Actions/plantActions'
+import {listPlants, deletePlant, createPlant} from '../../Actions/plantActions'
 
 const PlantListPage = () => {
 
@@ -14,15 +14,26 @@ const PlantListPage = () => {
   const plantDelete = useSelector(state => state.plantDelete)
   const {success: successDelete, error: errorDelete} = plantDelete
 
-  // const plantCreate = useSelector(state => state.plantCreate)
-  // const {plant: createdPlant, success: successCreate, error: errorCreate} = plantCreate
+  const plantCreate = useSelector(state => state.plantCreate)
+  const {plant: createdPlant, success: successCreate, error: errorCreate} = plantCreate
 
   const userLogin = useSelector(state => state.userLogin)
   const {userInfo} = userLogin
 
   useEffect(() => {
-    dispatch(listPlants())
-}, [dispatch, plantDelete])
+    dispatch({type:'PLANT_CREATE_RESET'})
+
+    if (!userInfo.is_staff) {
+      navigate('/users/login')
+    }
+    
+    if(successCreate) {
+      navigate(`/admin/plant/${createdPlant.id}/edit`)
+    } else {
+      dispatch(listPlants())
+    }
+
+}, [dispatch, successDelete, successCreate, createdPlant, navigate, userInfo])
 
   const handleDelete = (id) => {
     if (window.confirm('Are you sure you want to delete this plant?')) {
@@ -32,8 +43,8 @@ const PlantListPage = () => {
     }
   }
 
-  const handleCreatePlant = (plant) => {
-    // Create plant
+  const handleCreatePlant = () => {
+    dispatch(createPlant())
   }
 
   return (
@@ -51,7 +62,7 @@ const PlantListPage = () => {
                   <p>{plant.name}</p>
                   <p>{plant.price}</p>
                   <p>{plant.description}</p>
-                  <Link to={`/admin/plant/${plant.id}/edit`}></Link>
+                  <Link to={`/admin/plant/${plant.id}/edit`}>EDIT</Link>
                   <button onClick={() => handleDelete(plant.id)}>REMOVE PLANT</button>  
             </div>
 

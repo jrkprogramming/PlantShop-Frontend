@@ -40,7 +40,29 @@ export const deletePlant = (id) => async (dispatch, getState) => {
         )
 
     dispatch({
-        type: 'PLANT_DELETE',
-        payload: data
+        type: 'PLANT_DELETE'
     })
+}
+
+
+export const createPlant = () => async (dispatch, getState) => {
+
+    const {
+        userLogin: {userInfo},
+    } = getState();
+
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${userInfo.token}`
+        }
+    }
+
+    const {data} = await axios.post(`/plants/create/`, {}, config)
+
+    dispatch({
+        type: 'PLANT_CREATE',
+        payload: data,
+    })
+    
 }
