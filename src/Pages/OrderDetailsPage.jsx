@@ -9,10 +9,12 @@ const OrderDetailsPage = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const orderDetail = useSelector(state => state.orderDetail)
+    const orderDetail = useSelector((state) => state.orderDetail)
     const {order, error, loading} = orderDetail
 
     console.log(order)
+    console.log(error)
+    console.log(loading)
     
     if(!loading && !error){
         order.itemsPrice = order.orderItems.reduce((acc, item) => acc + item.price * item.orderQty, 0)
@@ -32,7 +34,7 @@ const OrderDetailsPage = () => {
 
   return (
     <div className="p-10 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mx-[30%] my-[5%]">
-        
+        {console.log(order)}
         <h1 className="mt-0 mb-2 text-2xl font-medium leading-tight text-neutral-100">Review Order</h1>
         <div className="mt-0 mb-2 text-2xl font-medium leading-tight text-neutral-100">
         Shipping Address: {order.shippingAddress.address}, {order.shippingAddress.city}, {order.shippingAddress.state}, {order.shippingAddress.zipcode}
