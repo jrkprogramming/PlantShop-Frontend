@@ -34,14 +34,14 @@ const CartPage = () => {
     }
 
   return (
-    <div>
+    <div className="p-10 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mx-[30%] my-[5%]">
         
-        <h1> Shopping Cart </h1>
+        <h1 className="font-medium leading-tight text-5xl mt-0 mb-2 text-black"> Shopping Cart </h1>
 
         <h2>Subtotal: ({cartItems.reduce((acc, item) => acc + item.cartQty, 0)}) items</h2> 
         ${cartItems.reduce((acc, item) => acc + item.cartQty * item.price, 0).toFixed(2)}
         <br></br>
-        <button type="button" onClick={checkoutHandler}>CHECKOUT</button>
+        <button type="button" onClick={checkoutHandler} class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">CHECKOUT</button>
 
         <br></br><br></br><br></br>
 
@@ -56,9 +56,10 @@ const CartPage = () => {
                 <li key={item.plant}>
 
                     <Link to={`/plants/${item.plant}`}>{item.name}</Link>
+                    <br></br>
                     ${item.price}
                     <br></br>
-                    <img src={item.image} alt={item.name}></img>
+                    <img src={item.image} alt={item.name} className="w-48 h-48"></img>
 
                     <form onChange={(e) => dispatch(addToCart(item.plant, Number(e.target.value)))}>
                         <select value={item.cartQty}>
@@ -72,7 +73,7 @@ const CartPage = () => {
                         </select>
                     </form>
 
-                    <button type='button' onClick={()=> removeFromCartHandler(item.plant)}>REMOVE</button>
+                    <button class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type='button' onClick={()=> removeFromCartHandler(item.plant)}>REMOVE</button>
 
                 </li>
             ))}

@@ -14,8 +14,11 @@ const HomePage = () => {
     useEffect(() => {
         dispatch(listPlants())
     }, [dispatch])
-  
+    
     return (
+
+
+
             <div className="flex flex-wrap p-10 justify-center">
                 {plants.map(plant => (
                 <p>
@@ -23,6 +26,8 @@ const HomePage = () => {
                 </p>
                 ))}
             </div>
+
+
   )
 }
 
