@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Routes, Route } from "react-router-dom";
 import Navbar from './Components/Navbar'
+import Footer from './Components/Footer'
 import HomePage from './Pages/HomePage'
 import ProductDetailsPage from './Pages/PlantDetailsPage'
 import CartPage from './Pages/CartPage'
@@ -37,6 +38,8 @@ function App() {
           <Route path='/admin/plantList' element={<PlantListPage />}></Route>
 
         </Routes>
+
+      <Footer></Footer>
         
     </div>
   );
