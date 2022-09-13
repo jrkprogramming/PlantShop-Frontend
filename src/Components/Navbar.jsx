@@ -43,7 +43,7 @@ const Navbar = () => {
 
     {userInfo ? (
 
-      <div className="flex flex-row  ">
+      <div className="flex flex-row ">
           <a href="/users/profile" class="flex items-center px-2">
               <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Welcome, {userInfo.username}</span>
           </a>
