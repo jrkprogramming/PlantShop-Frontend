@@ -30,6 +30,7 @@ const PlaceOrderPage = () => {
     useEffect(() => {
         if(success){
             navigate(`/orders/${order.id}`)
+            dispatch({type: 'ORDER_RESET'})
         }
     }, [success, navigate])
 

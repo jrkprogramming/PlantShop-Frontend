@@ -14,6 +14,7 @@ import PaymentPage from './Pages/PaymentPage'
 import PlaceOrderPage from './Pages/PlaceOrderPage'
 import LandingPage from './Pages/LandingPage'
 import PlantListPage from './Pages/AdminPages/PlantListPage'
+import OrderDetailsPage from './Pages/OrderDetailsPage'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path='/users/signup' element={<SignupPage/>}></Route>
           <Route path='/users/profile' element={<ProfilePage/>}></Route>
           <Route path='/plants/:id' element={<ProductDetailsPage />}></Route>
+          
           <Route path="/cart">
             <Route index element={<CartPage />} />
             <Route path=":id" element={<CartPage />} />
@@ -34,6 +36,7 @@ function App() {
           <Route path='/shipping' element={<ShippingPage />}></Route>
           <Route path='/payment' element={<PaymentPage />}></Route>
           <Route path='/placeorder' element={<PlaceOrderPage />}></Route>
+          <Route path='/orders/:id' element={<OrderDetailsPage />}></Route>
 
           <Route path='/admin/plantList' element={<PlantListPage />}></Route>
 
