@@ -44,6 +44,8 @@ const CartPage = () => {
         <br></br>
         <button type="button" onClick={checkoutHandler} class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-green-500 dark:hover:bg-stone-400  dark:focus:ring-blue-800">PROCEED TO CHECKOUT</button>
 
+        {/* Should have radio buttons here to see if its delivery / pickup */}
+
         <br></br><br></br><br></br>
 
         {cartItems.length === 0 ? (
@@ -61,7 +63,7 @@ const CartPage = () => {
 
                     <h5 className="mt-0 mb-2 text-2xl font-medium leading-tight text-neutral-100"><Link to={`/plants/${item.plant}`}>{item.name}</Link>
                     <br></br>
-                    ${item.price}</h5>
+                    {item.cartQty} x ${item.price} = ${(item.price * item.cartQty).toFixed(2)}</h5>
                     <br></br>
                     <form className="flex inline-flex" onChange={(e) => dispatch(addToCart(item.plant, Number(e.target.value)))}>
                         <select value={item.cartQty} class="form-select appearance-none
@@ -90,7 +92,7 @@ const CartPage = () => {
 
                     <br></br>
                     <br></br>
-                    <img src={item.image} alt={item.name} className="w-48 h-48"></img>
+                    <img src={item.image} alt={item.name} className="w-[40%] h-[48%]"></img>
 
 
                     <button class="mt-10 inline-flex items-center py-2 px-2 text-sm font-medium text-center text-white rounded-lg dark:bg-green-500 dark:hover:bg-red-400  focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800" type='button' onClick={()=> removeFromCartHandler(item.plant)}><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>REMOVE</button>

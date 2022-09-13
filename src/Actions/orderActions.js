@@ -25,4 +25,3 @@ export const orderCreate = (order) => async (dispatch, getState) => {
         payload: data
     })
 }
-

@@ -60,16 +60,16 @@ export const userEditReducer = (state = {}, action) => {
 
 
 
-export const userListReducer = (state = {users:[]}, action) => {
-    switch (action.type) {
+// export const userListReducer = (state = {users:[]}, action) => {
+//     switch (action.type) {
 
-        case 'USER_LIST':
-            return {users: action.payload}
+//         case 'USER_LIST':
+//             return {users: action.payload}
 
-        case 'USER_RESET':
-            return {users: []}
+//         case 'USER_RESET':
+//             return {users: []}
 
-        default:
-            return state
-    }
-}
+//         default:
+//             return state
+//     }
+// }
