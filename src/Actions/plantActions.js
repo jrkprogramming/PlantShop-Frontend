@@ -66,3 +66,30 @@ export const createPlant = () => async (dispatch, getState) => {
     })
     
 }
+
+
+export const editPlant = (plant) => async (dispatch, getState) => {
+
+    const {
+        userLogin: {userInfo},
+    } = getState();
+
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${userInfo.token}`
+        }
+    }
+
+    const {data} = await axios.put(`/plants/edit/${plant.id}/`, plant, config)
+
+    dispatch({
+        type: 'PLANT_EDIT',
+        payload: data,
+    })
+    // This will update the data when the form is submitted
+    dispatch({
+        type: 'PLANT_DETAILS',
+        payload: data})
+    
+}

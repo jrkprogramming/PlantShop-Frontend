@@ -14,6 +14,7 @@ import PaymentPage from './Pages/PaymentPage'
 import PlaceOrderPage from './Pages/PlaceOrderPage'
 import LandingPage from './Pages/LandingPage'
 import PlantListPage from './Pages/AdminPages/PlantListPage'
+import PlantEditPage from './Pages/AdminPages/PlantEditPage'
 import OrderDetailsPage from './Pages/OrderDetailsPage'
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
           <Route path='/users/signup' element={<SignupPage/>}></Route>
           <Route path='/users/profile' element={<ProfilePage/>}></Route>
           <Route path='/plants/:id' element={<ProductDetailsPage />}></Route>
-          
+
           <Route path="/cart">
             <Route index element={<CartPage />} />
             <Route path=":id" element={<CartPage />} />
@@ -39,6 +40,7 @@ function App() {
           <Route path='/orders/:id' element={<OrderDetailsPage />}></Route>
 
           <Route path='/admin/plantList' element={<PlantListPage />}></Route>
+          <Route path='/admin/plants/:id/edit' element={<PlantEditPage />}></Route>
 
         </Routes>
 
