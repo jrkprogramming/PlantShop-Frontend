@@ -1,8 +1,5 @@
 import axios from 'axios';
 
-
-
-
 export const login = (username, password) => async (dispatch) => {
 
     const config = {
@@ -29,6 +26,7 @@ export const logout = () => (dispatch) => {
     dispatch({type: 'USER_DETAILS_RESET'})
 
     dispatch({type: 'USER_LIST_LOGOUT'})
+    dispatch({type: 'ORDER_LIST_RESET'})
 }
 
 

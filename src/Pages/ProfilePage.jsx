@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link, useNavigate, useLocation} from 'react-router-dom'
 import {getUserDetails, editUserInfo} from '../Actions/userActions'
+import {listOrders} from '../Actions/orderActions'
 
 const ProfilePage = () => {
 
@@ -24,6 +25,11 @@ const ProfilePage = () => {
 
     const userEdit = useSelector(state => state.userEdit)
     const {success} = userEdit
+    
+    const listMyOrders = useSelector(state => state.listMyOrders)
+    const {orders} = listMyOrders
+
+    console.log(orders)
 
     useEffect(() => {
         if(!userInfo) {
@@ -32,6 +38,7 @@ const ProfilePage = () => {
             if(!user || !user.username || success) {
                 dispatch({type: 'USER_RESET'})
                 dispatch(getUserDetails('profile'))
+                dispatch(listOrders())
             } else {
                 setUsername(user.username)
                 setEmail(user.email)
@@ -65,6 +72,8 @@ const ProfilePage = () => {
         <h1 className="mt-0 mb-2 text-5xl font-medium leading-tight text-neutral-100">User Profile</h1>
 
         <br></br>
+<div>
+
 
 <form onSubmit={handleSubmit}>
 <div class="relative z-0 mb-6 w-full group">
@@ -98,6 +107,42 @@ const ProfilePage = () => {
 
   <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-500 dark:hover:bg-stone-400 dark:focus:ring-blue-800">UPDATE ACCOUNT</button>
 </form>
+</div>
+<br></br><br></br>
+    <div>
+        <h2 className="mt-0 mb-2 text-5xl font-medium leading-tight text-neutral-100">MY ORDERS</h2>
+        <table className="mt-0 mb-2 font-medium leading-tight text-5 text-neutral-100">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Paid</th>
+                    <th>Delivered</th>
+                    <th></th>
+                </tr>
+            </thead>
+                <br></br>
+                       <tbody>
+                                    {orders.map(order => (
+                                        <tr key={order._id}>
+                                            <td>{order._id}</td>
+                                            <td>{order.createdAt.substring(0, 10)}</td>
+                                            <td>${order.totalPrice}</td>
+                                            <td>{order.isPaid ? 'PAID' : (
+                                                <i className='fas fa-times' style={{ color: 'red' }}></i>
+                                            )}</td>
+                                            <td>
+                                                <Link to={`/orders/${order.id}`}>
+                                                    <button className='btn-sm'>Details</button>
+                                                </Link>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+        </table>
+    </div>
+
 
 
     </div>

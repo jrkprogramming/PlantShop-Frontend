@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link, useNavigate, useParams} from 'react-router-dom'
-import {getOrderDetails} from '../Actions/orderActions'
+import {getOrderDetails, payOrder} from '../Actions/orderActions'
 import axios from 'axios'
 
  
@@ -12,22 +12,14 @@ const OrderDetailsPage = () => {
     const {id} = useParams();
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
+
     
-    // const orderDetail = useSelector(state => state.orderDetail)
     const [order, setOrder] = useState({})
+    // const orderDetail = useSelector(state => state.orderDetail)
     // const order = orderDetail
     const userLogin = useSelector(state => state.userLogin)
     const {userInfo} = userLogin
-
-    // const getData = async () => {
-    //     const { data } = await axios.get(`/orders/${id}`,{headers:{'Content-type' : 'application/json', Authorization: `Bearer ${userInfo.token}`}});
-    //     setOrder(data);
-    //   };
-    // // getData()
-
-    // useEffect(() =>{
-    //     getData()
-    // }, [])
     
     useEffect(() => {
         axios.get(`/orders/${id}`, 
@@ -47,7 +39,7 @@ const OrderDetailsPage = () => {
     console.log(id)
     console.log(userInfo)
     
-    order.itemsPrice = order?.orderItems.reduce((acc, item) => acc + item.price * item.cartQty, 0)
+    // order.itemsPrice = order?.orderItems.reduce((acc, item) => acc + item.price * item.cartQty, 0)
 
 
     //might still need this
@@ -59,6 +51,7 @@ const OrderDetailsPage = () => {
     // }, [dispatch, id])
 
     
+    // AXjUNE2xdEpihjQK-ik8YSz9vomo1C7QNefNoiVvjxBkbMnXzdCZuHd4Oced1gqBf0N8mi58PK9wP1Ph
 
 
 
@@ -76,7 +69,7 @@ const OrderDetailsPage = () => {
 
 
 
-        <h1 className="mt-0 mb-2 text-2xl font-medium leading-tight text-neutral-100">Review Order</h1>
+        <h1 className="mt-0 mb-2 text-2xl font-medium leading-tight text-neutral-100">Order# {order?.id}</h1>
         <div className="mt-0 mb-2 text-2xl font-medium leading-tight text-neutral-100">
         {/* Shipping Address: {order.shippingAddress.address}, {order.shippingAddress.city}, {order.shippingAddress.state}, {order.shippingAddress.zipcode} */}
         </div>
@@ -104,7 +97,7 @@ const OrderDetailsPage = () => {
 
             <h3 className="mt-0 mb-2 text-2xl font-medium leading-tight text-neutral-100">Order Summary
             Subtotal: 
-            ${(order?.itemsPrice).toFixed(2)}
+            ${order?.itemsPrice}
             <br></br>
             Shipping: 
             ${order?.shippingPrice}

@@ -27,3 +27,31 @@ export const orderCreateReducer = (state={}, action) => {
 //             return state
 //     }
 // }
+
+export const orderPaidReducer = (state = {}, action) => {
+    switch(action.type) {
+
+        case 'ORDER_PAID':
+            return {success: true}
+
+        case 'ORDER_RESET':
+            return {}
+
+        default:
+            return state
+    }
+}
+
+export const listOrdersReducer = (state = {orders:[]}, action) => {
+    switch(action.type) {
+
+        case 'ORDER_LIST':
+            return {orders: action.payload}
+
+        case 'ORDER_RESET':
+            return {orders: []}
+
+        default:
+            return state
+    }
+}
