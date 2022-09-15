@@ -55,3 +55,14 @@ export const listOrdersReducer = (state = {orders:[]}, action) => {
             return state
     }
 }
+
+export const listOrdersAdminReducer = (state = {orders:[]}, action) => {
+    switch(action.type) {
+
+        case 'ORDER_LIST_ADMIN':
+            return {orders: action.payload}
+
+        default:
+            return state
+    }
+}

@@ -101,3 +101,25 @@ export const listOrders = () => async (dispatch, getState) => {
     })
 
 }
+
+export const listOrdersAll = () => async (dispatch, getState) => {
+
+    const { 
+        userLogin: {userInfo}
+    } = getState()
+
+    const config = {
+        headers:{
+            'Content-type' : 'application/json',
+            Authorization: `Bearer ${userInfo.token}`
+        }
+    }
+
+    const {data} = await axios.get(`/orders/`, config)
+        
+    dispatch({
+        type: 'ORDER_LIST_ADMIN',
+        payload: data
+    })
+
+}

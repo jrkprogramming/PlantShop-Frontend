@@ -17,6 +17,7 @@ import PlantListPage from './Pages/AdminPages/PlantListPage'
 import PlantEditPage from './Pages/AdminPages/PlantEditPage'
 import OrderDetailsPage from './Pages/OrderDetailsPage'
 import DeliverMethodPage from './Pages/DeliveryMethodPage'
+import OrderListAll from './Pages/AdminPages/OrderListAll';
 
 function App() {
   return (
@@ -44,6 +45,8 @@ function App() {
 
           <Route path='/admin/plantList' element={<PlantListPage />}></Route>
           <Route path='/admin/plants/:id/edit' element={<PlantEditPage />}></Route>
+          <Route path='/admin/plants/:id/edit' element={<PlantEditPage />}></Route>
+          <Route path='/admin/orderlist' element={<OrderListAll />}></Route>
 
         </Routes>
 
