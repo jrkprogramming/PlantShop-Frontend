@@ -6,16 +6,13 @@ import {login} from '../Actions/userActions'
 const LoginPage = () => {
     
     const navigate = useNavigate()
-    const location = useLocation()
     const dispatch = useDispatch()
     
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
-    // const redirect = location.search ? location.search.split('=')[1] : '/'
-
     const userLogin = useSelector(state => state.userLogin)
-    const {userInfo, error} = userLogin
+    const {userInfo} = userLogin
 
     useEffect(() => {
         if(userInfo) {
@@ -29,24 +26,6 @@ const LoginPage = () => {
     }
 
   return (
-    // <div>
-
-    // <h1>Sign In</h1>
-    // {error && <p>{error}</p>}
-    // <form onSubmit={submitHandler}>
-    //     Username:
-    //     <input type="text" name="username" value={username} onChange={(e) => {setUsername(e.target.value)}}></input>
-    //     Password:
-    //     <input type="password" name="password" value={password} onChange={(e) => {setPassword(e.target.value)}}></input>
-
-    //     <button type="submit">SIGN IN</button>
-    // </form>
-
-    //     <br></br>
-
-    //     Don't have an account? <Link to={'/users/signup'}>Register</Link>
-
-    // </div>
 
 <div class="flexp-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 justify-center m-auto mt-[10%]">
 <form class="space-y-6" onSubmit={submitHandler}>

@@ -29,8 +29,8 @@ const CartPage = () => {
     }
 
     const checkoutHandler = () => {
-        navigate('/login?redirect=shipping')
-        navigate('/shipping')
+        navigate('/login?redirect=deliveryMethod')
+        navigate('/deliveryMethod')
     }
 
   return (
@@ -44,7 +44,6 @@ const CartPage = () => {
         <br></br>
         <button type="button" onClick={checkoutHandler} class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-green-500 dark:hover:bg-stone-400  dark:focus:ring-blue-800">PROCEED TO CHECKOUT</button>
 
-        {/* Should have radio buttons here to see if its delivery / pickup */}
 
         <br></br><br></br><br></br>
 
@@ -81,9 +80,9 @@ const CartPage = () => {
                                     
                                     focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
                         {
-                            [...Array(item.quantity).keys()].map((x) => (
-                                <option key={x+1} value={x+1}>
-                                    {x+1}
+                            [...Array(item.quantity).keys()].map((index) => (
+                                <option key={index+1} value={index+1}>
+                                    {index+1}
                                 </option>
                             ))
                         }

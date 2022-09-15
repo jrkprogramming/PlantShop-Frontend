@@ -93,4 +93,3 @@ export const editPlant = (plant) => async (dispatch, getState) => {
         payload: data})
     
 }
-

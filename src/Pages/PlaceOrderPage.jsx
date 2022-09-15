@@ -30,7 +30,7 @@ const PlaceOrderPage = () => {
     useEffect(() => {
         if(success){
             navigate(`/orders/${order.id}`)
-            dispatch({type: 'ORDER_RESET'})
+            // dispatch({type: 'ORDER_RESET'})
         }
     }, [success, navigate])
 
@@ -52,9 +52,13 @@ const PlaceOrderPage = () => {
     <div className="p-10 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mx-[30%] my-[5%]">
         
         <h1 className="mt-0 mb-2 text-2xl font-medium leading-tight text-neutral-100">Review Order</h1>
+
         <div className="mt-0 mb-2 text-2xl font-medium leading-tight text-neutral-100">
         Shipping Address: {cart.shippingAddress.address}, {cart.shippingAddress.city}, {cart.shippingAddress.state}, {cart.shippingAddress.zipcode}
         </div>
+
+
+
         
         <div className="mt-0 mb-2 text-2xl font-medium leading-tight text-neutral-100">
         Payment Method: {cart.paymentMethod}
@@ -99,6 +103,8 @@ const PlaceOrderPage = () => {
 
     
         {cart.cartItems === 0 ? null : <button class="mt-10 inline-flex items-center py-2 px-2 text-sm font-medium text-center text-white rounded-lg dark:bg-green-500 dark:hover:bg-red-400" type="button" onClick={placeOrder}>Place Order</button>}
+
+        
 
     </div>
   )

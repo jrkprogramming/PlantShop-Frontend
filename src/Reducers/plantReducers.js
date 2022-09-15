@@ -10,7 +10,7 @@ export const plantListReducer = (state = {plants:[]}, action) => {
     }
 }
 
-export const plantDetailsReducer = (state = {plant:[]}, action) => {
+export const plantDetailsReducer = (state = {plant:{}}, action) => {
     switch (action.type) {
 
         case 'PLANT_DETAILS':

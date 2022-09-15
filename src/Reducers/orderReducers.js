@@ -14,18 +14,16 @@ export const orderCreateReducer = (state={}, action) => {
         
         default:
             return state
-    }
+        }
 }
 
-export const orderDetailReducer = (state={loading: true, orderItems:[], shippingAddress:[]}, action) => {
-    switch(action.type) {
-        case 'ORDER_DETAIL':
-            return {
-                loading:false, 
-                order: action.payload
-            }
+// export const orderDetailReducer = (state = {orderItems: [], shippingAddress:{}}, action) => {
+//     switch(action.type) {
 
-        default:
-            return state
-    }
-}
+//         case 'ORDER_DETAILS':
+//             return {order: action.payload}
+
+//         default:
+//             return state
+//     }
+// }

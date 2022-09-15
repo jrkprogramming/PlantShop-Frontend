@@ -16,6 +16,7 @@ import LandingPage from './Pages/LandingPage'
 import PlantListPage from './Pages/AdminPages/PlantListPage'
 import PlantEditPage from './Pages/AdminPages/PlantEditPage'
 import OrderDetailsPage from './Pages/OrderDetailsPage'
+import DeliverMethodPage from './Pages/DeliveryMethodPage'
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
       <Navbar></Navbar>
 
         <Routes>
-        <Route path='/' element={<LandingPage/>}></Route>
+
+          <Route path='/' element={<LandingPage/>}></Route>
           <Route path='/plants' element={<HomePage/>}></Route>
           <Route path='/users/login' element={<LoginPage/>}></Route>
           <Route path='/users/signup' element={<SignupPage/>}></Route>
@@ -34,6 +36,7 @@ function App() {
             <Route index element={<CartPage />} />
             <Route path=":id" element={<CartPage />} />
           </Route>
+          <Route path='/deliveryMethod' element={<DeliverMethodPage />}></Route>
           <Route path='/shipping' element={<ShippingPage />}></Route>
           <Route path='/payment' element={<PaymentPage />}></Route>
           <Route path='/placeorder' element={<PlaceOrderPage />}></Route>

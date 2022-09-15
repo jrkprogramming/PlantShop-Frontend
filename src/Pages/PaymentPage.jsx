@@ -25,15 +25,18 @@ const PaymentPage = () => {
 
 
   return (
-    <div>
+    <div className="p-20 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mx-[30%] my-[5%]">
 
         <form onSubmit={handleSubmit}>
-            Select Method:
-            PayPal:
+            <h2 className="mt-0 mb-2 text-5xl font-medium leading-tight text-neutral-100">Select Method:</h2>
+            <label for="paymentMethod" className="mt-10 mb-2 text-2xl font-medium leading-tight text-neutral-100">PayPal:</label>
             <input type="radio" value="paypal" name="paymentMethod" checked onChange={(e) => setPaymentMethod(e.target.value)}/>
-            Credit Card:
+            <br></br>
+            <label for="paymentMethod" className="mt-0 mb-2 text-2xl font-medium leading-tight text-neutral-100">Credit Card:</label>
             <input type="radio" value="card" name="paymentMethod" checked onChange={(e) => setPaymentMethod(e.target.value)}/>
-            <button type="submit" >Continue</button>
+
+            
+            <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base px-6 py-3.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 m-10" type="submit" >Continue</button>
         </form>
 
 

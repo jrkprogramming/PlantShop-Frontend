@@ -34,30 +34,24 @@ export const orderCreate = (order) => async (dispatch, getState) => {
 }
 
 
-export const getOrderDetails = (id) => async (dispatch, getState) => {
+// export const getOrderDetails = (id) => async (dispatch, getState) => {
 
-    const { 
-        userLogin: {userInfo}
-    } = getState()
+//     const { 
+//         userLogin: {userInfo}
+//     } = getState()
 
+//     const config = {
+//         headers:{
+//             'Content-type' : 'application/json',
+//             Authorization: `Bearer ${userInfo.token}`
+//         }
+//     }
 
-    const config = {
-        headers:{
-            'Content-type' : 'application/json',
-            Authorization: `Bearer ${userInfo.token}`
-        }
-    }
-
-    const {data} = await axios.get(
-        `/orders/${id}/`,
-        config
-        )
+//     const {data} = await axios.get(`/orders/${id}`, config)
         
-    dispatch({
-        type: 'ORDER_DETAIL',
-        payload: data
-    })
-}
+//     dispatch({
+//         type: 'ORDER_DETAILS',
+//         payload: data
+//     })
 
-
-
+// }
