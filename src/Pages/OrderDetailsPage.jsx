@@ -6,18 +6,11 @@ import axios from 'axios'
 
  
 const OrderDetailsPage = () => {
-
-    
     
     const {id} = useParams();
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
-
-
     
     const [order, setOrder] = useState({})
-    // const orderDetail = useSelector(state => state.orderDetail)
-    // const order = orderDetail
+
     const userLogin = useSelector(state => state.userLogin)
     const {userInfo} = userLogin
     
@@ -33,39 +26,9 @@ const OrderDetailsPage = () => {
             })
     }, [id, userInfo.token])
     
-    
-    console.log(order)
-    console.log(order.orderItems)
-    console.log(id)
-    console.log(userInfo)
-    
-    // order.itemsPrice = order?.orderItems.reduce((acc, item) => acc + item.price * item.cartQty, 0)
-
-
-    //might still need this
-    // useEffect(() => {
-    //     // if(!order || order.id !== Number(id)){
-    //         dispatch(getOrderDetails(id))
-    //         // console.log(id)
-    //     // }
-    // }, [dispatch, id])
-
-    
-    // AXjUNE2xdEpihjQK-ik8YSz9vomo1C7QNefNoiVvjxBkbMnXzdCZuHd4Oced1gqBf0N8mi58PK9wP1Ph
-
-
-
 
   return (
     <div className="p-10 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mx-[30%] my-[5%]">
-
-    
-
-       
-
-
-
-
 
 
 

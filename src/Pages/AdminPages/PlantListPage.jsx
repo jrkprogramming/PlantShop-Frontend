@@ -24,11 +24,12 @@ const PlantListPage = () => {
     dispatch({type:'PLANT_CREATE_RESET'})
 
     if (!userInfo.is_staff) {
+      alert('You are not authorized for this page')
       navigate('/users/login')
     }
     
     if(successCreate) {
-      navigate(`/admin/plant/${createdPlant.id}/edit`)
+      navigate(`/admin/plants/${createdPlant.id}/edit`)
     } else {
       dispatch(listPlants())
     }
@@ -44,6 +45,7 @@ const PlantListPage = () => {
   }
 
   const handleCreatePlant = () => {
+    alert('A new plant was added!')
     dispatch(createPlant())
   }
 
@@ -52,9 +54,14 @@ const PlantListPage = () => {
         
         <h1 className="mt-0 mb-2 text-5xl font-medium leading-tight text-neutral-100">List of Plants</h1>
 
-        <button class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-green-500 dark:hover:bg-stone-400  dark:focus:ring-blue-800" onClick={handleCreatePlant}>ADD PLANT TO LIST</button>
+      <div className='flex flex-inline '>
+        <button class="inline-flex items-center m-5 py-3 px-4 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-green-500 dark:hover:bg-stone-400  dark:focus:ring-blue-800" onClick={handleCreatePlant}>ADD A PLANT</button>
 
-        {errorDelete && <p>{errorDelete}</p>}
+        <a class="inline-flex items-center m-5 py-3 px-4 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-green-500 dark:hover:bg-stone-400  dark:focus:ring-blue-800" href="/admin/orderlist">GO TO ORDERS</a>
+      </div>
+
+
+        <br></br><br></br>
 
           {plants.map(plant => (
             <div>
