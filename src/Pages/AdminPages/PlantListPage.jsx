@@ -52,7 +52,7 @@ const PlantListPage = () => {
   return (
     <div className="p-10 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mx-[30%] my-[5%]">
         
-        <h1 className="mt-0 mb-2 text-5xl font-medium leading-tight text-neutral-100">List of Plants</h1>
+        {/* <h1 className="mt-0 mb-2 text-5xl font-medium leading-tight text-neutral-100">List of Plants</h1>
 
       <div className='flex flex-inline '>
         <button class="inline-flex items-center m-5 py-3 px-4 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-green-500 dark:hover:bg-stone-400  dark:focus:ring-blue-800" onClick={handleCreatePlant}>ADD A PLANT</button>
@@ -75,7 +75,25 @@ const PlantListPage = () => {
 
             </div>
 
-            ))}
+            ))} */}
+
+<div class="max-w-sm w-full lg:max-w-full lg:flex">
+  <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" title="Woman holding a mug">
+
+  </div>
+  <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-gray rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+    <div class="mb-8">
+      <p class="text-sm text-gray-600 flex items-center">
+        Quantity: 
+      </p>
+      <br></br>
+      <div class="text-white font-bold text-xl mb-2">Can coffee make you a better developer?</div>
+      <p class="text-white text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
+    </div>
+
+
+  </div>
+</div>
 
     </div>
   )
