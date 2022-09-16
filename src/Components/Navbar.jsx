@@ -44,7 +44,7 @@ const Navbar = () => {
     {userInfo ? (
 
       <div className="flex flex-row ">
-          <a href="/users/profile" class="flex items-center px-2">
+          <a href="/plants" class="flex items-center px-2">
               <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Welcome, {userInfo.username}</span>
           </a>
       </div>
@@ -53,8 +53,8 @@ const Navbar = () => {
     
     <div>
 
-          <a href="/users/profile" class="flex items-center px-2">
-              <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Mari's Plant Shop</span>
+          <a href="/plants" class="flex items-center px-2">
+              <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Plant Cultivar</span>
           </a>
 
     </div>
@@ -77,7 +77,7 @@ const Navbar = () => {
         {userInfo ? (
 
         <li>
-          <a href="/orders" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Orders</a>
+          <a href="/users/profile" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Profile</a>
         </li>
           ) : null}
           {userInfo ? (

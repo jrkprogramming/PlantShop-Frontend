@@ -58,22 +58,24 @@ const PlantEditPage = () => {
         const img = e.target.files[0]
         const formData = new FormData()
 
+        console.log(img)
+        console.log(formData)
+
         formData.append('image', img)
         formData.append('plant_id', id)
 
-        try {
+        // try {
             const config = {
-                headers: {
-                    'Content-type': 'multipart/form-data'
-                }
+                headers: {'Content-type': 'multipart/form-data'}
             }
 
-            const {data} = await axios.post('plants/imgUpload/', formData, config)
+            const {data} = await axios.post('http://localhost:8000/plants/imgUpload/', formData, config)
             setImage(data)
             console.log('uploaded')
-        } catch (error) {
-            console.log(error)
-        }
+        // } catch (error) {
+        //     console.log(error)
+        //     console.log('error')
+        // }
     }
 
   return (
@@ -85,7 +87,7 @@ const PlantEditPage = () => {
         <form onSubmit={handleSubmit}>
             <input type="text" value={name} placeholder="Enter name" onChange={(e) => setName(e.target.value)}></input>
             <input type="number" value={price} placeholder="Enter price" onChange={(e) => setPrice(e.target.value)}></input>
-            <input type="text" value={image} placeholder="Enter image" onChange={(e) => setImage(e.target.value)}></input>
+            {/* <input type="text" value={image} placeholder="Enter image" onChange={(e) => setImage(e.target.value)}></input> */}
             
             {/* <input onChange={handleImgUpload}></input> */}
             
