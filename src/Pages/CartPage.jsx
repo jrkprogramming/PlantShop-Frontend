@@ -220,8 +220,9 @@ const CartPage = () => {
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <polyline points="15 6 9 12 15 18" />
                 </svg>
-                <p class="text-sm pl-2 leading-none dark:hover:text-gray-200">Back</p>
+                <button href="/plants" class="text-sm pl-2 leading-none dark:hover:text-gray-200">Browse</button>
                 </div>
+                
                 <p class="lg:text-4xl text-3xl font-black leading-10 text-gray-800 dark:text-white pt-3">Shopping Cart</p>
                 <br></br>
 
