@@ -78,7 +78,7 @@ const PlantListPage = () => {
             ))} */}
 {plants.map(plant => (
 <div class="max-w-sm w-100 lg:max-w-full lg:flex my-5">
-  <div  class="bg-[url(/what_a_rush.png')] h-100 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" title="Photo of Plant">
+  <div  class=" h-100 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" title="Photo of Plant">
 
     <img src={plant.image} class="h-100 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"></img>
 
@@ -93,10 +93,15 @@ const PlantListPage = () => {
       <p class="text-white text-base">Price: ${plant.price}</p>
       <p class="text-white text-base">In Stock: {plant.quantity}</p>
       <br></br>
-      <p class="text-white text-base">{plant.description}</p>
+      {/* <p class="text-white text-base">{plant.description}</p> */}
     </div>
-    <a class="inline-flex items-center py-2 px-3 mx-[3%] text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-green-500 dark:hover:bg-stone-400  dark:focus:ring-blue-800" href={`/admin/plants/${plant.id}/edit`}>EDIT</a>
 
+    <div>
+    <a class="inline-flex items-center py-2 px-3 mx-[3%] text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-green-500 dark:hover:bg-stone-400  dark:focus:ring-blue-800" href={`/admin/plants/${plant.id}/edit`}>EDIT</a>
+  
+    <button class="inline-flex items-center py-2 px-3 mx-[3%] text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-green-500 dark:hover:bg-red-400  dark:focus:ring-blue-800" onClick={() => handleDelete(plant.id)}>REMOVE</button>
+    </div>
+   
   </div>
 </div>
 ))}
