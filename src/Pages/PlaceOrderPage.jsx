@@ -121,7 +121,7 @@ const PlaceOrderPage = () => {
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <polyline points="15 6 9 12 15 18" />
         </svg>
-        <p class="text-sm pl-2 leading-none dark:hover:text-gray-200">Back</p>
+        <a href='plants/' class="text-sm pl-2 leading-none dark:hover:text-gray-200">Browse</a>
         </div>
         <p class="lg:text-4xl text-3xl font-black leading-10 text-gray-800 dark:text-white pt-3">Review Order</p>
         <br></br>
@@ -228,7 +228,7 @@ const PlaceOrderPage = () => {
 
             <div class="flex items-center justify-between pt-5">
             <p class="leading-none text-gray-800 dark:text-white text-4xl">Total</p>
-            <p class="leading-none text-gray-800 dark:text-white text-5xl">${cart.taxPrice}</p>
+            <p class="leading-none text-gray-800 dark:text-white text-5xl">${cart.totalPrice}</p>
             </div>
             
 

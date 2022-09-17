@@ -152,7 +152,7 @@ const ProfilePage = () => {
         </table>
     </div> */}
 
-<div class="max-w-2xl mx-auto">
+<div class="max-w-2xl mx-auto mb-[10%]">
 
 	<div>
     <h2 className="mt-5 mb-2 text-5xl font-medium leading-tight text-neutral-100">My Orders</h2>
@@ -176,10 +176,10 @@ const ProfilePage = () => {
 				<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
 					<tr>
 						<th scope="col" class="px-6 py-3">
-                        Date
+                        Order #
 						</th>
 						<th scope="col" class="px-6 py-3">
-                        Order #
+                        Date
 						</th>
 						<th scope="col" class="px-6 py-3">
 						Total
@@ -195,8 +195,8 @@ const ProfilePage = () => {
                 <tbody>
                                     {orders.map(order => (
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={order._id}>
-                                            <td class="px-6 py-4">{order.createdAt.substring(0, 10)}</td>
                                             <td class="px-6 py-4">{order.id}</td>
+                                            <td class="px-6 py-4">{order.createdAt.substring(0, 10)}</td>
                                             <td class="px-6 py-4">${order.totalPrice}</td>
                                             <td class="px-6 py-4">{order.isPaid ? 'PAID' : (
                                                 <i className='fas fa-times' style={{ color: 'red' }}>Not Paid</i>

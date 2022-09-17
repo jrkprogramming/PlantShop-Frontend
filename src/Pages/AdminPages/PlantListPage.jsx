@@ -80,7 +80,7 @@ const PlantListPage = () => {
 <div class="max-w-sm w-100 lg:max-w-full lg:flex my-5">
   <div  class=" h-100 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" title="Photo of Plant">
 
-    <img src={plant.image} class="h-100 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"></img>
+    <img src={plant.image} alt={plant.name} class="h-100 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"></img>
 
   </div>
   <div class="w-[100%] h-100 border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-gray rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">

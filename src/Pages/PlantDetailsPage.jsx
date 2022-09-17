@@ -111,8 +111,6 @@ const PlantDetailsPage = () => {
                     <p className="text-base leading-normal text-gray-400 xl:pr-48 lg:leading-tight mt-7">{plant.description}</p>
                     <p className="text-base leading-4 text-gray-400 mt-7">Price: ${plant.price}</p>
                     <p className="mt-4 text-base leading-4 text-gray-400">{plant.quantity > 0 ? 'In Stock' : 'Out of Stock'}</p>
-                    <p className="mt-4 text-base leading-4 text-gray-400">Height: 10 inches</p>
-                    <p className="mt-4 text-base leading-4 text-gray-400">Depth: 5.1 inches</p>
                 </div>
                 <br></br><br></br>
 
