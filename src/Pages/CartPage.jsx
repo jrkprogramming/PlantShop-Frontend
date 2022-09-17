@@ -316,9 +316,9 @@ const CartPage = () => {
                     <p class="text-base leading-none text-gray-800 dark:text-white">Shipping</p>
                     <p class="text-base leading-none text-gray-800 dark:text-white">{!cartItems.shippingAddress ? 'N/A' : '$10.00'}</p>
                     </div>
-                    <div class="flex items-center justify-between pt-5">
-                    <p class="text-base leading-none text-gray-800 dark:text-white">Subtotal</p>
-                    <p class="text-base leading-none text-gray-800 dark:text-white">${cartItems.reduce((acc, item) => acc + item.cartQty * item.price, 0).toFixed(2)}</p>
+                    <div class="flex items-center justify-between pt-5 ">
+                    <p class=" leading-none text-gray-800 dark:text-white text-4xl">Subtotal</p>
+                    <p class=" leading-none text-gray-800 dark:text-white text-5xl">${cartItems.reduce((acc, item) => acc + item.cartQty * item.price, 0).toFixed(2)}</p>
                     </div>
                     <br></br>
                     <button onClick={checkoutHandler} class="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700">PROCEED TO CHECKOUT</button>

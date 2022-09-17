@@ -26,8 +26,8 @@ const OrderListAll = () => {
 
 
   return (
-    <div>
-        <h2 className="mt-5 mb-2 text-5xl font-medium leading-tight text-neutral-100">Orders</h2>
+    <div class="max-w-2xl mx-auto">
+        <h2 className="mt-5 mb-8 text-5xl font-medium leading-tight text-neutral-100">Orders (Admin)</h2>
         {/* <table>
             <thead>
                 <tr>

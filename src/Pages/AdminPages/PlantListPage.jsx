@@ -52,7 +52,7 @@ const PlantListPage = () => {
   return (
     <div className="p-10 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mx-[30%] my-[5%]">
         
-        <h1 className="mt-0 mb-2 text-5xl font-medium leading-tight text-neutral-100">List of Plants</h1>
+        <h1 className="mt-0 mb-2 text-5xl font-medium leading-tight text-neutral-100">List of Plants (Admin)</h1>
 
       <div className='flex flex-inline '>
         <button class="inline-flex items-center m-5 py-3 px-4 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-green-500 dark:hover:bg-stone-400  dark:focus:ring-blue-800" onClick={handleCreatePlant}>ADD A PLANT</button>
