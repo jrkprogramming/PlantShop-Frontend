@@ -5,8 +5,6 @@ import {orderCreate} from '../Actions/orderActions'
  
 const PlaceOrderPage = () => {
 
-    // This page should have the Pay button and when isPaid state is changed to True, place order will be able to be clicked.
-
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -18,11 +16,13 @@ const PlaceOrderPage = () => {
     cart.itemsPrice = cart.cartItems.reduce((acc, item) => acc + item.price * item.cartQty, 0)
 
     /// Shipping Price is also Delivery Charge
+    
     cart.shippingPrice = (cart.itemsPrice > 100 ? 0 : 10).toFixed(2)
 
     cart.taxPrice = Number((0.075) * cart.itemsPrice).toFixed(2)
 
-    cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2)
+    // Add Shipping Charge when applicable
+    cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.taxPrice)).toFixed(2)
 
     if(!cart.paymentMethod) {
         navigate('/payment')
@@ -32,7 +32,7 @@ const PlaceOrderPage = () => {
     useEffect(() => {
         if(success){
             navigate(`/orders/${order.id}`)
-            // dispatch({type: 'ORDER_RESET'})
+            dispatch({type: 'ORDER_RESET'})
         }
     }, [success, navigate, order?.id])
 
@@ -83,11 +83,9 @@ const PlaceOrderPage = () => {
             <div class="flex items-center justify-between w-full pt-1">
             <p class="text-base font-black leading-none text-gray-800 dark:text-white">{item.name}</p>
 
-
-            
             <br></br><br></br>
 
-            </div>
+        </div>
 
             <p class="w-96 text-xs leading-3 text-gray-600 dark:text-white">Quantity: {item.cartQty}</p>
             <div class="flex items-center justify-between pt-5">
@@ -126,11 +124,6 @@ const PlaceOrderPage = () => {
             <p class="leading-none text-gray-800 dark:text-white text-4xl">Total</p>
             <p class="leading-none text-gray-800 dark:text-white text-5xl">${cart.totalPrice}</p>
             </div>
-            
-
-
-       
-  
   
             <br></br>
             {cart.cartItems === 0 ? null : <button class="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700" type="button" onClick={placeOrder}>PLACE ORDER</button>}
