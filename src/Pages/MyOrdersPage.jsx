@@ -74,7 +74,7 @@ const ProfilePage = () => {
                                             <td class="px-6 py-4">{order.id}</td>
                                             <td class="px-6 py-4">{order.createdAt.substring(0, 10)}</td>
                                             <td class="px-6 py-4">${order.totalPrice}</td>
-                                            <td class="px-6 py-4">{order.isPaid ? 'PAID' : (
+                                            <td class="px-6 py-4" style={{ color: 'green' }}>{order.isPaid ?  'PAID' : (
                                                 <i className='fas fa-times' style={{ color: 'red' }}>Not Paid</i>
                                             )}</td>
                                             <td>
