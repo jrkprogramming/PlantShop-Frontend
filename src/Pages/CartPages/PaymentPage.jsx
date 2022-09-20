@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link, useNavigate, useLocation} from 'react-router-dom'
-import {savePaymentMethod} from '../Actions/cartActions'
+import {savePaymentMethod} from '../../Actions/cartActions'
 
 const PaymentPage = () => {
 

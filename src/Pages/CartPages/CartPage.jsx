@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {Link, useParams, useLocation, useNavigate} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
-import { addToCart, removeFromCart } from '../Actions/cartActions'
+import { addToCart, removeFromCart } from '../../Actions/cartActions'
 
 const CartPage = () => {
 
