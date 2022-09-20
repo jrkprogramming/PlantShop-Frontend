@@ -1,75 +1,82 @@
-<<<<<<< HEAD
-# PlantShop_Frontend
-Front end
-=======
-# Getting Started with Create React App
+Plant Cultivar
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Project Description
 
-## Available Scripts
+Plant Cultivar is the name of my mother's small business and this ecommerce application is created to help her manage her orders and allows her customers to browse and purchase her products online.
 
-In the project directory, you can run:
 
-### `npm start`
+## Deployed Link:
+https://jmmz-ga-p3places-ui.herokuapp.com/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### SCREENSHOTS:
 
-### `npm test`
+Welcome Page / Home Route:
+![alt text](assets/pinit_landingPage.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Login Page:
+![alt text](assets/pinit_loginPage.png)
 
-### `npm run build`
+Signup Page:
+![alt text](assets/pinit_signupPage.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Index page that displays all the pins from all the users. Includes Search bar that allows user to search for keywords for pins.
+![alt text](assets/pinit_homemapPage.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This page only displays pins created by the signed in user (Profile Page)
+![alt text](assets/pinit_profilePage.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Form page to create new pins. Includes search bar that autocompletes places with an address (Google Maps Places API) and Drag and drop feature to upload images.
+![alt text](assets/pinit_newPinFormPage.png)
 
-### `npm run eject`
+Sidebar that shows a list view of the pins on the map.
+![alt text](assets/pinit_sidebar.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### User Stories
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+MVP:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+As the admin user, there should be CRUD on the available plants for sale
+<br>
+As a user, I would like to see the available plants that are posted.
+<br>
+As a user, I would like to add items to a cart before placing the order.
+<br>
+As a user, I would like to edit the cart on the cart page.
+<br>
+As a user, I want to be able to place orders for the plants (pickup/delivery).
+<br>
+As a user, I want to be able to sign in and create a new account (Token Authorization).
+<br>
 
-## Learn More
+Stretch Goals:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+As the admin user, there should be a 'delivery routes' page that displays the current orders that need to be delivered. (Also a list view. Google Maps)
+<br>
+As a user, I would like to be able to contact the seller via Chatbox feature.
+<br>
+Admin users can view the profits of every transaction.
+<br>
+Admin users can see a graph of profits over the course of the day, the week, the month, the quarter, the year.
+<br>
+Admin users should approve/disapprove orders that have been placed.
+<br>
+Users should get an email confirmation of their order.
+<br>
+Users should make the payment for the order for delivery transactions on the website. (Stripe API)
+<br>
+Categorize the items in the store.
+<br>
+Search and filter function for the items in the store.
+<br>
+Use Google Maps API to be able to route the most efficient path for all the deliveries.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+### Wireframes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<br>
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
->>>>>>> 3918c2d (Initialize project using Create React App)
+For more info, check out the Backend README file.

@@ -37,6 +37,7 @@ function App() {
             <Route index element={<CartPage />} />
             <Route path=":id" element={<CartPage />} />
           </Route>
+          
           <Route path='/deliveryMethod' element={<DeliverMethodPage />}></Route>
           <Route path='/shipping' element={<ShippingPage />}></Route>
           <Route path='/payment' element={<PaymentPage />}></Route>

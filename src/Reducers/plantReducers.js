@@ -48,14 +48,14 @@ export const plantCreateReducer = (state = {}, action) => {
 }
 
 
-export const plantEditReducer = (state = {product:{}}, action) => {
+export const plantEditReducer = (state = {plant:{}}, action) => {
     switch (action.type) {
 
         case 'PLANT_EDIT':
             return {success:true, plant:action.payload}
 
         case 'PLANT_EDIT_RESET':
-            return {product:{}}
+            return {plant:{}}
         
         default:
             return state

@@ -29,8 +29,6 @@ const PaymentPage = () => {
 
         <form onSubmit={handleSubmit}>
             <h2 className="mt-0 mb-2 text-5xl font-medium leading-tight text-neutral-100">Select Payment Method:</h2>
-            {/* <label for="paymentMethod" className="mt-10 mb-2 text-2xl font-medium leading-tight text-neutral-100">PayPal:</label>
-            <input type="radio" value="paypal" name="paymentMethod" checked onChange={(e) => setPaymentMethod(e.target.value)}/> */}
             <br></br>
             <label for="paymentMethod" className="mt-0 mb-2 text-2xl font-medium leading-tight text-neutral-100">Credit Card:</label>
             <input type="radio" value="card" name="paymentMethod" checked onChange={(e) => setPaymentMethod(e.target.value)}/>

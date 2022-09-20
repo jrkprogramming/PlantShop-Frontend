@@ -28,59 +28,6 @@ const OrderListAll = () => {
   return (
     <div class="max-w-2xl mx-auto">
         <h2 className="mt-5 mb-8 text-5xl font-medium leading-tight text-neutral-100">Orders (Admin)</h2>
-        {/* <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>USER</th>
-                    <th>DATE</th>
-                    <th>Total</th>
-                    <th>PAID</th>
-                    <th>DELIVERED</th>
-                    <th></th>
-                </tr>
-            </thead>
-
-            <tbody>
-                            {orders.map(order => (
-                                <tr key={order._id}>
-                                <td>{order._id}</td>
-                                <td>{order.user && order.user.name}</td>
-                                <td>{order.createdAt.substring(0, 10)}</td>
-                                <td>${order.totalPrice}</td>
-
-                                <td>{order.isPaid ? (
-                                    order.paidAt.substring(0, 10)
-                                ) : (
-                                        <i className='fas fa-check' style={{ color: 'red' }}></i>
-                                    )}
-                                </td>
-
-                                <td>{order.isDelivered ? (
-                                    order.deliveredAt.substring(0, 10)
-                                ) : (
-                                        <i className='fas fa-check' style={{ color: 'red' }}></i>
-                                    )}
-                                </td>
-
-                                <td>
-                                    <Link to={`/orders/${order.id}`}>
-                                        <button variant='light' className='btn-sm'>
-                                            Details
-                                        </button>
-                                    </Link>
-
-
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-        </table> */}
-
-
-
-
-
 
 
 {/* Create a search function */}
@@ -120,7 +67,7 @@ const OrderListAll = () => {
                                             <td class="px-6 py-4">{order.user.first_name} {order.user.last_name}</td>
                                             <td class="px-6 py-4">{order.createdAt.substring(0, 10)}</td>
                                             <td class="px-6 py-4">${order.totalPrice}</td>
-                                            <td class="px-6 py-4">{order.isPaid ? 'PAID' : (
+                                            <td class="px-6 py-4" style={{ color: 'green' }}>{order.isPaid ? 'PAID' : (
                                                 <i className='fas fa-times' style={{ color: 'red' }}>Not Paid</i>
                                             )}</td>
                                             <td>

@@ -61,21 +61,6 @@ const PlantListPage = () => {
       </div>
 
 
-        {/* <br></br><br></br>
-
-          {plants.map(plant => (
-            <div>
-                  <p className="mt-0 mb-2 text-2xl font-medium leading-tight text-neutral-100">PLANT #: {plant.id}</p>
-                  <p className="mt-0 mb-2 text-2xl font-medium leading-tight text-neutral-100">{plant.name}</p>
-                  <p className="mt-0 mb-2 text-2xl font-medium leading-tight text-neutral-100">{plant.price}</p>
-                  <p className="mt-0 mb-2 text-2xl font-medium leading-tight text-neutral-100">{plant.description}</p>
-                  <a class="inline-flex items-center py-2 px-3 mx-[3%] text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-green-500 dark:hover:bg-stone-400  dark:focus:ring-blue-800" href={`/admin/plants/${plant.id}/edit`}>EDIT</a>
-                  <button class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-green-500 dark:hover:bg-stone-400  dark:focus:ring-blue-800" onClick={() => handleDelete(plant.id)}>REMOVE PLANT</button>
-                  <br></br><br></br><br></br>
-
-            </div>
-
-            ))} */}
 {plants.map(plant => (
 <div class="max-w-sm w-100 lg:max-w-full lg:flex my-5">
   <div  class=" h-100 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" title="Photo of Plant">
@@ -93,7 +78,7 @@ const PlantListPage = () => {
       <p class="text-white text-base">Price: ${plant.price}</p>
       <p class="text-white text-base">In Stock: {plant.quantity}</p>
       <br></br>
-      {/* <p class="text-white text-base">{plant.description}</p> */}
+  
     </div>
 
     <div>

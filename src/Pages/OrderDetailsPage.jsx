@@ -1,18 +1,39 @@
 import React, {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {Link, useNavigate, useParams} from 'react-router-dom'
-import {getOrderDetails, payOrder} from '../Actions/orderActions'
+import {useParams} from 'react-router-dom'
+import {payOrder} from '../Actions/orderActions'
+import {PayPalButton} from 'react-paypal-button-v2'
 import axios from 'axios'
 
  
 const OrderDetailsPage = () => {
     
     const {id} = useParams();
+    const dispatch = useDispatch()
     
     const [order, setOrder] = useState({})
+    const [sdkReady, setSdkReady] = useState(false)
 
     const userLogin = useSelector(state => state.userLogin)
     const {userInfo} = userLogin
+
+    const orderPaid = useSelector(state => state.orderPaid)
+    const {success:successPay} = orderPaid
+
+    const payPalScript = () => {
+        const script = document.createElement('script')
+        script.type = 'text/javascript'
+        script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.REACT_APP_PAYPAL_ID}`
+        script.async = true
+        script.onload = () => {
+            setSdkReady(true)
+        }
+        document.body.appendChild(script)
+    }
+
+    const handlePayment = (paymentMethod) => {
+        dispatch(payOrder(id, paymentMethod))
+    }
     
     useEffect(() => {
         axios.get(`/orders/${id}`, 
@@ -24,66 +45,19 @@ const OrderDetailsPage = () => {
             .catch(err => {
                 console.log(err)
             })
-    }, [id, userInfo.token])
+
+            if (!order?.isPaid) {
+                if(!window.paypal) {
+                    payPalScript()
+                } else {
+                    setSdkReady(true)
+                }
+            }
+    }, [id, userInfo.token, successPay])
+
     
 
   return (
-    // <div className="p-10 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mx-[30%] my-[5%]">
-
-
-
-    //     <h1 className="mt-0 mb-2 text-2xl font-medium leading-tight text-neutral-100">Order# {order?.id}</h1>
-    //     <div className="mt-0 mb-2 text-2xl font-medium leading-tight text-neutral-100">
-    //     {/* Shipping Address: {order.shippingAddress.address}, {order.shippingAddress.city}, {order.shippingAddress.state}, {order.shippingAddress.zipcode} */}
-    //     </div>
-        
-    //     <div className="mt-0 mb-2 text-2xl font-medium leading-tight text-neutral-100">
-    //     Payment Method: {order?.paymentMethod}
-    //     </div>
-
-    //     <br></br><br></br><br></br>
-
-    //     <div className="mt-0 mb-2 text-2xl font-medium leading-tight text-neutral-100">
-    //         <h2 >Order Items</h2>
-    //         {order?.orderItems?.map((item, index) => {
-    //             return <div>
-    //                 <img src={item.image} alt={item.name}></img>
-    //                 <Link to={`/plants/${item.plant}`}>{item.name}</Link>
-    //                 <br></br>
-    //                 {item.cartQty} x ${item.price} = ${(item.cartQty * item.price).toFixed(2)}
-    //                 <br></br><br></br>
-    //             </div>
-    //         })}
-    //     </div>
-
-    //     <div>
-
-    //         <h3 className="mt-0 mb-2 text-2xl font-medium leading-tight text-neutral-100">Order Summary
-    //         Subtotal: 
-    //         ${order?.itemsPrice}
-    //         <br></br>
-    //         Shipping: 
-    //         ${order?.shippingPrice}
-    //         <br></br>
-    //         Tax: 
-    //         ${order?.taxPrice}
-    //         <br></br>
-    //         Total: 
-    //         ${order?.totalPrice}
-    //         </h3>
-
-    //     </div>
-
-    //     <div>
-    //         {/* {error && <p>{error}</p>} */}
-    //     </div>
-
-    
-    //     {/* {order.orderItems === 0 ? null : <button class="mt-10 inline-flex items-center py-2 px-2 text-sm font-medium text-center text-white rounded-lg dark:bg-green-500 dark:hover:bg-red-400" type="button" onClick={placeOrder}>Place Order</button>} */}
-
-    
-    
-    // </div>
 
     <div>
 
@@ -97,41 +71,12 @@ const OrderDetailsPage = () => {
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <polyline points="15 6 9 12 15 18" />
         </svg>
-        <p class="text-sm pl-2 leading-none dark:hover:text-gray-200">Back</p>
+        <a href="/plants" class="text-sm pl-2 leading-none dark:hover:text-gray-200">Browse</a>
         </div>
         <p class="lg:text-4xl text-3xl font-black leading-10 text-gray-800 dark:text-white pt-3">Order#: {order?.id}</p>
         <br></br>
-
-
-
-
-        {/* {cartItems.map(item => (
-        <div key={item.plant}>
-
-
-            <h5 className="mt-0 mb-2 text-2xl font-medium leading-tight text-neutral-100"><Link to={`/plants/${item.plant}`}>{item.name}</Link>
-
-            {item.cartQty} x ${item.price} = ${(item.price * item.cartQty).toFixed(2)}</h5>
-
-            <form className="flex inline-flex" onChange={(e) => dispatch(addToCart(item.plant, Number(e.target.value)))}>
-                <select value={item.cartQty} >
-                {
-                    [...Array(item.quantity).keys()].map((index) => (
-                        <option key={index+1} value={index+1}>
-                            {index+1}
-                        </option>
-                    ))
-                }
-                </select>
-            </form>
-
-            <br></br>
-            <br></br>
-            <img src={item.image} alt={item.name} className="w-[40%] h-[48%]"></img>
-
-
-            <button class="mt-10 inline-flex items-center py-2 px-2 text-sm font-medium text-center text-white rounded-lg dark:bg-green-500 dark:hover:bg-red-400  focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800" type='button' onClick={()=> removeFromCartHandler(item.plant)}><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>REMOVE</button> */}
-
+        <p class="text-base font-black leading-none text-gray-800 dark:text-white">Thank you for shopping with Plant Cultivar!</p>
+        <br></br>
 
 
 
@@ -148,29 +93,14 @@ const OrderDetailsPage = () => {
             <div class="flex items-center justify-between w-full pt-1">
             <p class="text-base font-black leading-none text-gray-800 dark:text-white">{item.name}</p>
 
-
-            {/* <form className="flex inline-flex" onChange={(e) => dispatch(addToCart(item.plant, Number(e.target.value)))}>
-            <select aria-label="Select quantity" value={item.cartQty} class="py-2 px-1 border border-gray-200 mr-6 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white">
-            {
-                    [...Array(item.quantity).keys()].map((index) => (
-                        <option key={index+1} value={index+1}>
-                            {index+1}
-                        </option>
-                    ))
-            }
-            </select>
-            </form> */}
             
             <br></br><br></br>
 
             </div>
-            {/* <p class="text-xs leading-3 text-gray-600 dark:text-white pt-2">Height: 10 inches</p> */}
-            {/* <p class="text-xs leading-3 text-gray-600 dark:text-white py-4">Color: Black</p> */}
+
             <p class="w-96 text-xs leading-3 text-gray-600 dark:text-white">Quantity: {item.cartQty}</p>
             <div class="flex items-center justify-between pt-5">
-            {/* <div class="flex itemms-center">
-                <button class="text-xs leading-3 underline text-red-500 cursor-pointer" onClick={()=> removeFromCartHandler(item.plant)}>Remove</button>
-            </div> */}
+
             <p class="text-base font-black leading-none text-gray-800 dark:text-white">{item.cartQty} x ${item.price} = ${(item.price * item.cartQty).toFixed(2)}</p>
             </div>
         </div>
@@ -208,26 +138,35 @@ const OrderDetailsPage = () => {
 
             <div class="flex items-center justify-between pt-5">
             <p class="leading-none text-gray-800 dark:text-white text-4xl">Total</p>
-            <p class="leading-none text-gray-800 dark:text-white text-5xl">${order?.taxPrice}</p>
+            <p class="leading-none text-gray-800 dark:text-white text-5xl">${order?.totalPrice}</p>
             </div>
             
-
-
-       
-  
-  
             <br></br>
-            {/* <button onClick={checkoutHandler} class="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700">PROCEED TO CHECKOUT</button> */}
-            {/* {order.cartItems === 0 ? null : <button class="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700" type="button" onClick={placeOrder}>PLACE ORDER</button>} */}
-        </div>
-        {/* <div>
-            <div class="flex items-center pb-6 justify-between lg:pt-5 pt-20">
-            <p class="text-2xl leading-normal text-gray-800 dark:text-white">Total</p>
-            <p class="text-2xl font-bold leading-normal text-right text-gray-800 dark:text-white">,240</p>
+
+        {order?.isPaid ? (
+            <div>
+                <h3 className="text-sm leading-none text-green-800 text-s dark:text-green">This order was paid on {order?.paid_At}</h3>
             </div>
-            <button onClick={checkoutHandler} class="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700">Checkout</button>
-        </div> */}
+        ) : 
+
+        <div>
+
+            <h3 className="text-lg leading-none text-red-800 text-s dark:text-red">THIS ORDER HAS NOT YET BEEN PAID</h3>  
+            <br></br>
+                <PayPalButton amount={order?.totalPrice} onSuccess={handlePayment}/>
         </div>
+            
+        }
+
+        </div>
+
+        </div>
+
+
+
+
+
+
     </div>
     </div>
 </div>

@@ -41,36 +41,6 @@ const SignupPage = () => {
 
 
   return (
-    // <div>
-
-    // <h1>Sign Up</h1>
-    // {message && <p>{message}</p>}
-    // {error && <p>{error}</p>}
-    // <form onSubmit={handleSubmit}>
-    //     Username:
-    //     <input type="text" name="username" value={username} required onChange={(e) => {setUsername(e.target.value)}}></input>
-    //     <br></br>
-    //     Email:
-    //     <input type="text" name="email" value={email} required onChange={(e) => {setEmail(e.target.value)} }></input>
-    //     <br></br>
-    //     First Name:
-    //     <input type="text" name="first_name" value={first_name} required onChange={(e) => {set_first_name(e.target.value)}}></input>
-    //     <br></br>
-    //     Last Name:
-    //     <input type="text" name="last_name" value={last_name} required onChange={(e) => {set_last_name(e.target.value)}}></input>
-    //     <br></br>
-    //     Password:
-    //     <input type="text" name="password" value={password} required onChange={(e) => {setPassword(e.target.value)}}></input>
-    //     <br></br>
-    //     Confirm Password:
-    //     <input type="text" name="confirmPassword" value={confirmPassword} required onChange={(e) => {setConfirmPassword(e.target.value)}}></input>
-
-    //     <button type="submit">REGISTER</button>
-    // </form>
-
-    // Have an account? <Link to={redirect ? `/users/login?redirect=${redirect}` : '/users/login'}>Log In</Link>
-
-    // </div>
 
 
 

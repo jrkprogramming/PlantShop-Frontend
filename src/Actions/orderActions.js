@@ -33,29 +33,6 @@ export const orderCreate = (order) => async (dispatch, getState) => {
     localStorage.removeItem('cartItems')
 }
 
-
-// export const getOrderDetails = (id) => async (dispatch, getState) => {
-
-//     const { 
-//         userLogin: {userInfo}
-//     } = getState()
-
-//     const config = {
-//         headers:{
-//             'Content-type' : 'application/json',
-//             Authorization: `Bearer ${userInfo.token}`
-//         }
-//     }
-
-//     const {data} = await axios.get(`/orders/${id}`, config)
-        
-//     dispatch({
-//         type: 'ORDER_DETAILS',
-//         payload: data
-//     })
-
-// }
-
 export const payOrder = (id, paymentResult) => async (dispatch, getState) => {
 
     const { 

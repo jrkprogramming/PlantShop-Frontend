@@ -17,16 +17,13 @@ const HomePage = () => {
     
     return (
 
-
-
-            <div className="flex flex-wrap p-10 justify-center">
+            <div className="flex flex-wrap justify-center p-10">
                 {plants.map(plant => (
                 <p>
                     <Plant plant={plant}></Plant>
                 </p>
                 ))}
             </div>
-
 
   )
 }
