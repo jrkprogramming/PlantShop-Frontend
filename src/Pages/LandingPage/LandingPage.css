@@ -7,11 +7,11 @@ video {
   position: fixed;
   z-index: -1;
   overflow: hidden;
-  -webkit-filter: blur(1.35px);
-  -moz-filter: blur(1.35px);
-  -o-filter: blur(1.35px);
-  -ms-filter: blur(1.35px);
-  filter: blur(1.35px);
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
 }
 
 .video-container {

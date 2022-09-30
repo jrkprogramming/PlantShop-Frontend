@@ -7,8 +7,6 @@ const LandingPage = () => {
     <div className="video-container">
       <video src={Video} loop autoPlay muted />
 
-      <div>hi</div>
-
       <div className="main">
         <h2>Plants and Such</h2>
         <h1>Cultivated by Marinela</h1>

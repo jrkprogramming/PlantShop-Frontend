@@ -37,7 +37,7 @@ const CartPage = () => {
   return (
     <div>
       <div
-        class="rounded-lg mt-[5%] ml-[10%] w-[80%] h-[80%] bg-black dark:bg-gray-900 bg-opacity-90 top-0 overflow-y-visible overflow-x-hidden fixed "
+        class="rounded-lg mt-[5%] ml-[10%] w-[80%] h-[80%] bg-black dark:bg-gray-900 bg-opacity-90 top-0 overflow-y-auto overflow-x-hidden fixed "
         id="chec-div"
       >
         <div
