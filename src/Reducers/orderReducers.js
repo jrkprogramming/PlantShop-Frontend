@@ -1,57 +1,51 @@
+export const orderCreateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "ORDER_CREATE":
+      return {
+        success: true,
+        order: action.payload,
+      };
 
+    case "ORDER_RESET":
+      return {};
 
-export const orderCreateReducer = (state={}, action) => {
-    switch(action.type) {
-        case 'ORDER_CREATE':
-            return {
-                success: true,
-                order: action.payload
-            }
-
-        case 'ORDER_RESET':
-            return {}
-
-        
-        default:
-            return state
-        }
-}
+    default:
+      return state;
+  }
+};
 
 export const orderPaidReducer = (state = {}, action) => {
-    switch(action.type) {
+  switch (action.type) {
+    case "ORDER_PAID":
+      return { success: true };
 
-        case 'ORDER_PAID':
-            return {success: true}
+    case "ORDER_RESET":
+      return {};
 
-        case 'ORDER_RESET':
-            return {}
+    default:
+      return state;
+  }
+};
 
-        default:
-            return state
-    }
-}
+export const listOrdersReducer = (state = { orders: [] }, action) => {
+  switch (action.type) {
+    case "ORDER_LIST":
+      return { orders: action.payload };
 
-export const listOrdersReducer = (state = {orders:[]}, action) => {
-    switch(action.type) {
+    case "ORDER_RESET":
+      return { orders: [] };
 
-        case 'ORDER_LIST':
-            return {orders: action.payload}
+    default:
+      return state;
+  }
+};
 
-        case 'ORDER_RESET':
-            return {orders: []}
+export const listOrdersAdminReducer = (state = { orders: [] }, action) => {
+  switch (action.type) {
+    case "ORDER_LIST_ADMIN":
+      return { orders: action.payload };
 
-        default:
-            return state
-    }
-}
-
-export const listOrdersAdminReducer = (state = {orders:[]}, action) => {
-    switch(action.type) {
-
-        case 'ORDER_LIST_ADMIN':
-            return {orders: action.payload}
-
-        default:
-            return state
-    }
-}
+    default:
+      return state;
+  }
+};
