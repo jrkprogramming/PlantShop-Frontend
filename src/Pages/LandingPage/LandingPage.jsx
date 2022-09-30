@@ -10,7 +10,7 @@ const LandingPage = () => {
       <div>hi</div>
 
       <div className="main">
-        <h2>Plant and Such</h2>
+        <h2>Plants and Such</h2>
         <h1>Cultivated by Marinela</h1>
         {/* <p>
           Discover hidden gems, wherever you are. This App is the perfect way to
