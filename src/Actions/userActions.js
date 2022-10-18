@@ -8,7 +8,7 @@ export const login = (username, password) => async (dispatch) => {
   };
 
   const { data } = await axios.post(
-    "plantshop-backend.herokuapp.com/users/login/",
+    "https://plantshop-backend.herokuapp.com/users/login/",
     { username: username, password: password },
     config
   );
