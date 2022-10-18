@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const addToCart = (id, cartQty) => async (dispatch, getState) => {
   const { data } = await axios.get(
-    `plantshop-backend.herokuapp.com/plants/${id}`
+    `https://plantshop-backend.herokuapp.com/plants/${id}`
   );
 
   dispatch({

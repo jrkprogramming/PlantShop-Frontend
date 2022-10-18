@@ -1,95 +1,98 @@
-import axios from 'axios'
+import axios from "axios";
 
 export const listPlants = () => async (dispatch) => {
+  const { data } = await axios.get(
+    "https://plantshop-backend.herokuapp.com/plants"
+  );
 
-        const {data} = await axios.get('/plants')
-
-        dispatch({
-            type: 'PLANT_LIST',
-            payload: data
-        })
-}
+  dispatch({
+    type: "PLANT_LIST",
+    payload: data,
+  });
+};
 
 export const listPlantDetails = (id) => async (dispatch) => {
+  const { data } = await axios.get(
+    `https://plantshop-backend.herokuapp.com/plants/${id}`
+  );
 
-        const {data} = await axios.get(`/plants/${id}`)
-
-        dispatch({
-            type: 'PLANT_DETAILS',
-            payload: data
-        })
-
-}
+  dispatch({
+    type: "PLANT_DETAILS",
+    payload: data,
+  });
+};
 
 export const deletePlant = (id) => async (dispatch, getState) => {
+  const {
+    userLogin: { userInfo },
+  } = getState();
 
-    const {
-        userLogin: {userInfo},
-    } = getState();
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${userInfo.token}`,
+    },
+  };
 
-    const config = {
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${userInfo.token}`
-        }
-    }
+  const { data } = await axios.delete(
+    `https://plantshop-backend.herokuapp.com/plants/delete/${id}`,
+    config
+  );
 
-    const {data} = await axios.delete(
-        `/plants/delete/${id}`,
-        config
-        )
-
-    dispatch({
-        type: 'PLANT_DELETE'
-    })
-}
-
+  dispatch({
+    type: "PLANT_DELETE",
+  });
+};
 
 export const createPlant = () => async (dispatch, getState) => {
+  const {
+    userLogin: { userInfo },
+  } = getState();
 
-    const {
-        userLogin: {userInfo},
-    } = getState();
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${userInfo.token}`,
+    },
+  };
 
-    const config = {
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${userInfo.token}`
-        }
-    }
+  const { data } = await axios.post(
+    `https://plantshop-backend.herokuapp.com/plants/create/`,
+    {},
+    config
+  );
 
-    const {data} = await axios.post(`/plants/create/`, {}, config)
-
-    dispatch({
-        type: 'PLANT_CREATE',
-        payload: data,
-    })
-    
-}
-
+  dispatch({
+    type: "PLANT_CREATE",
+    payload: data,
+  });
+};
 
 export const editPlant = (plant) => async (dispatch, getState) => {
+  const {
+    userLogin: { userInfo },
+  } = getState();
 
-    const {
-        userLogin: {userInfo},
-    } = getState();
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${userInfo.token}`,
+    },
+  };
 
-    const config = {
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${userInfo.token}`
-        }
-    }
+  const { data } = await axios.put(
+    `https://plantshop-backend.herokuapp.com/plants/edit/${plant.id}/`,
+    plant,
+    config
+  );
 
-    const {data} = await axios.put(`/plants/edit/${plant.id}/`, plant, config)
-
-    dispatch({
-        type: 'PLANT_EDIT',
-        payload: data,
-    })
-    // This will update the data when the form is submitted
-    dispatch({
-        type: 'PLANT_DETAILS',
-        payload: data})
-    
-}
+  dispatch({
+    type: "PLANT_EDIT",
+    payload: data,
+  });
+  // This will update the data when the form is submitted
+  dispatch({
+    type: "PLANT_DETAILS",
+    payload: data,
+  });
+};

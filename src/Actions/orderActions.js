@@ -13,7 +13,7 @@ export const orderCreate = (order) => async (dispatch, getState) => {
   };
 
   const { data } = await axios.post(
-    `plantshop-backend.herokuapp.com/orders/add/`,
+    `https://plantshop-backend.herokuapp.com/orders/add/`,
     order,
     config
   );
@@ -44,7 +44,7 @@ export const payOrder = (id, paymentResult) => async (dispatch, getState) => {
   };
 
   const { data } = await axios.put(
-    `plantshop-backend.herokuapp.com/orders/${id}/pay/`,
+    `https://plantshop-backend.herokuapp.com/orders/${id}/pay/`,
     paymentResult,
     config
   );
@@ -68,7 +68,7 @@ export const listOrders = () => async (dispatch, getState) => {
   };
 
   const { data } = await axios.get(
-    `plantshop-backend.herokuapp.com/orders/myorders`,
+    `https://plantshop-backend.herokuapp.com/orders/myorders`,
     config
   );
 
@@ -91,7 +91,7 @@ export const listOrdersAll = () => async (dispatch, getState) => {
   };
 
   const { data } = await axios.get(
-    `plantshop-backend.herokuapp.com/orders/`,
+    `https://plantshop-backend.herokuapp.com/orders/`,
     config
   );
 

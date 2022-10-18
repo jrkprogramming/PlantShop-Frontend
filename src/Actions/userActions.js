@@ -37,7 +37,7 @@ export const signup =
     };
 
     const { data } = await axios.post(
-      "plantshop-backend.herokuapp.com/users/signup/",
+      "https://plantshop-backend.herokuapp.com/users/signup/",
       {
         username: username,
         email: email,
@@ -73,7 +73,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
   };
 
   const { data } = await axios.get(
-    `plantshop-backend.herokuapp.com/users/${id}/`,
+    `https://plantshop-backend.herokuapp.com/users/${id}/`,
     config
   );
 
@@ -96,7 +96,7 @@ export const editUserInfo = (user) => async (dispatch, getState) => {
   };
 
   const { data } = await axios.put(
-    `plantshop-backend.herokuapp.com/users/profile/edit/`,
+    `https://plantshop-backend.herokuapp.com/users/profile/edit/`,
     user,
     config
   );
