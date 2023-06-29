@@ -1,118 +1,106 @@
-import axios from "axios";
+import axios from 'axios'
 
-export const login = (username, password) => async (dispatch) => {
+export const login = (username, password) => async dispatch => {
   const config = {
     headers: {
-      "Content-type": "application/json",
+      'Content-type': 'application/json',
     },
-  };
+  }
+
+  const { data } = await axios.post('http://localhost:3000/users/login/', { username: username, password: password }, config)
+  dispatch({
+    type: 'USER_LOGIN',
+    payload: data,
+  })
+  localStorage.setItem('userInfo', JSON.stringify(data))
+}
+
+export const logout = () => dispatch => {
+  localStorage.removeItem('userInfo')
+  dispatch({ type: 'USER_LOGOUT' })
+  dispatch({ type: 'USER_DETAILS_RESET' })
+
+  dispatch({ type: 'USER_LIST_LOGOUT' })
+  dispatch({ type: 'ORDER_LIST_RESET' })
+}
+
+export const signup = (username, email, first_name, last_name, password) => async dispatch => {
+  const config = {
+    headers: {
+      'Content-type': 'application/json',
+    },
+  }
 
   const { data } = await axios.post(
-    "https://plantshop-backend.herokuapp.com/users/login/",
-    { username: username, password: password },
+    'http://localhost:3000/users/signup/',
+    {
+      username: username,
+      email: email,
+      first_name: first_name,
+      last_name: last_name,
+      password: password,
+    },
     config
-  );
+  )
+
   dispatch({
-    type: "USER_LOGIN",
+    type: 'USER_SIGNUP',
     payload: data,
-  });
-  localStorage.setItem("userInfo", JSON.stringify(data));
-};
+  })
 
-export const logout = () => (dispatch) => {
-  localStorage.removeItem("userInfo");
-  dispatch({ type: "USER_LOGOUT" });
-  dispatch({ type: "USER_DETAILS_RESET" });
+  dispatch({
+    type: 'USER_LOGIN',
+    payload: data,
+  })
+  localStorage.setItem('userInfo', JSON.stringify(data))
+}
 
-  dispatch({ type: "USER_LIST_LOGOUT" });
-  dispatch({ type: "ORDER_LIST_RESET" });
-};
-
-export const signup =
-  (username, email, first_name, last_name, password) => async (dispatch) => {
-    const config = {
-      headers: {
-        "Content-type": "application/json",
-      },
-    };
-
-    const { data } = await axios.post(
-      "https://plantshop-backend.herokuapp.com/users/signup/",
-      {
-        username: username,
-        email: email,
-        first_name: first_name,
-        last_name: last_name,
-        password: password,
-      },
-      config
-    );
-
-    dispatch({
-      type: "USER_SIGNUP",
-      payload: data,
-    });
-
-    dispatch({
-      type: "USER_LOGIN",
-      payload: data,
-    });
-    localStorage.setItem("userInfo", JSON.stringify(data));
-  };
-
-export const getUserDetails = (id) => async (dispatch, getState) => {
+export const getUserDetails = id => async (dispatch, getState) => {
   const {
     userLogin: { userInfo },
-  } = getState();
+  } = getState()
 
   const config = {
     headers: {
-      "Content-type": "application/json",
+      'Content-type': 'application/json',
       Authorization: `Bearer ${userInfo.token}`,
     },
-  };
+  }
 
-  const { data } = await axios.get(
-    `https://plantshop-backend.herokuapp.com/users/${id}/`,
-    config
-  );
+  const { data } = await axios.get(`http://localhost:3000/users/${id}/`, config)
 
   dispatch({
-    type: "USER_DETAILS",
+    type: 'USER_DETAILS',
     payload: data,
-  });
-};
+  })
+}
 
-export const editUserInfo = (user) => async (dispatch, getState) => {
+export const editUserInfo = user => async (dispatch, getState) => {
   const {
     userLogin: { userInfo },
-  } = getState();
+  } = getState()
 
   const config = {
     headers: {
-      "Content-type": "application/json",
+      'Content-type': 'application/json',
       Authorization: `Bearer ${userInfo.token}`,
     },
-  };
+  }
 
-  const { data } = await axios.put(
-    `https://plantshop-backend.herokuapp.com/users/profile/edit/`,
-    user,
-    config
-  );
+  const { data } = await axios.put(`http://localhost:3000/users/profile/edit/`, user, config)
 
   dispatch({
-    type: "USER_EDIT",
+    type: 'USER_EDIT',
     payload: data,
-  });
+  })
 
   dispatch({
-    type: "USER_LOGIN",
+    type: 'USER_LOGIN',
     payload: data,
-  });
+  })
 
-  localStorage.setItem("userInfo", JSON.stringify(data));
-};
+  localStorage.setItem('userInfo', JSON.stringify(data))
+}
 
 // export const listUsers = () => async (dispatch, getState) => {
 

@@ -1,98 +1,83 @@
-import axios from "axios";
+import axios from 'axios'
 
-export const listPlants = () => async (dispatch) => {
-  const { data } = await axios.get(
-    "https://plantshop-backend.herokuapp.com/plants"
-  );
+export const listPlants = () => async dispatch => {
+  const { data } = await axios.get('http://localhost:3000/plants')
 
   dispatch({
-    type: "PLANT_LIST",
+    type: 'PLANT_LIST',
     payload: data,
-  });
-};
+  })
+}
 
-export const listPlantDetails = (id) => async (dispatch) => {
-  const { data } = await axios.get(
-    `https://plantshop-backend.herokuapp.com/plants/${id}`
-  );
+export const listPlantDetails = id => async dispatch => {
+  const { data } = await axios.get(`http://localhost:3000/plants/${id}`)
 
   dispatch({
-    type: "PLANT_DETAILS",
+    type: 'PLANT_DETAILS',
     payload: data,
-  });
-};
+  })
+}
 
-export const deletePlant = (id) => async (dispatch, getState) => {
+export const deletePlant = id => async (dispatch, getState) => {
   const {
     userLogin: { userInfo },
-  } = getState();
+  } = getState()
 
   const config = {
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${userInfo.token}`,
     },
-  };
+  }
 
-  const { data } = await axios.delete(
-    `https://plantshop-backend.herokuapp.com/plants/delete/${id}`,
-    config
-  );
+  const { data } = await axios.delete(`http://localhost:3000/plants/delete/${id}`, config)
 
   dispatch({
-    type: "PLANT_DELETE",
-  });
-};
+    type: 'PLANT_DELETE',
+  })
+}
 
 export const createPlant = () => async (dispatch, getState) => {
   const {
     userLogin: { userInfo },
-  } = getState();
+  } = getState()
 
   const config = {
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${userInfo.token}`,
     },
-  };
+  }
 
-  const { data } = await axios.post(
-    `https://plantshop-backend.herokuapp.com/plants/create/`,
-    {},
-    config
-  );
+  const { data } = await axios.post(`http://localhost:3000/plants/create/`, {}, config)
 
   dispatch({
-    type: "PLANT_CREATE",
+    type: 'PLANT_CREATE',
     payload: data,
-  });
-};
+  })
+}
 
-export const editPlant = (plant) => async (dispatch, getState) => {
+export const editPlant = plant => async (dispatch, getState) => {
   const {
     userLogin: { userInfo },
-  } = getState();
+  } = getState()
 
   const config = {
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${userInfo.token}`,
     },
-  };
+  }
 
-  const { data } = await axios.put(
-    `https://plantshop-backend.herokuapp.com/plants/edit/${plant.id}/`,
-    plant,
-    config
-  );
+  const { data } = await axios.put(`http://localhost:3000/plants/edit/${plant.id}/`, plant, config)
 
   dispatch({
-    type: "PLANT_EDIT",
+    type: 'PLANT_EDIT',
     payload: data,
-  });
+  })
   // This will update the data when the form is submitted
   dispatch({
-    type: "PLANT_DETAILS",
+    type: 'PLANT_DETAILS',
     payload: data,
-  });
-};
+  })
+}

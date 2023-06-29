@@ -1,19 +1,17 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 const DeliveryMethodPage = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleDelivery = () => {
-    navigate("/login?redirect=shipping");
-    navigate("/shipping");
-  };
+    navigate('/login?redirect=shipping')
+    navigate('/shipping')
+  }
 
   return (
     <div className="p-20 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mx-[30%] my-[5%]">
-      <h2 className="mt-0 mb-2 text-5xl font-medium leading-tight text-neutral-100">
-        CHOOSE YOUR DELIVERY METHOD
-      </h2>
+      <h2 className="mt-0 mb-2 text-5xl font-medium leading-tight text-neutral-100">CHOOSE YOUR DELIVERY METHOD</h2>
 
       <button
         type="button"
@@ -33,7 +31,7 @@ const DeliveryMethodPage = () => {
         </button>
       </Link>
     </div>
-  );
-};
+  )
+}
 
-export default DeliveryMethodPage;
+export default DeliveryMethodPage

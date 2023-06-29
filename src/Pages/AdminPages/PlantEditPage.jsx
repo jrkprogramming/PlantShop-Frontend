@@ -1,45 +1,45 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { listPlantDetails, editPlant } from "../../Actions/plantActions";
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { listPlantDetails, editPlant } from '../../Actions/plantActions'
 
 const PlantEditPage = () => {
-  const { id } = useParams();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const { id } = useParams()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
-  const [image, setImage] = useState("");
-  const [description, setDescription] = useState("");
-  const [quantity, setQuantity] = useState(0);
+  const [name, setName] = useState('')
+  const [price, setPrice] = useState(0)
+  const [image, setImage] = useState('')
+  const [description, setDescription] = useState('')
+  const [quantity, setQuantity] = useState(0)
 
-  const plantDetails = useSelector((state) => state.plantDetails);
-  const { plant } = plantDetails;
+  const plantDetails = useSelector(state => state.plantDetails)
+  const { plant } = plantDetails
 
-  const plantEdit = useSelector((state) => state.plantEdit);
-  const { success: successfulEdit } = plantEdit;
+  const plantEdit = useSelector(state => state.plantEdit)
+  const { success: successfulEdit } = plantEdit
 
   useEffect(() => {
     if (successfulEdit) {
-      dispatch({ type: "PLANT_EDIT_RESET" });
-      navigate("/admin/plantList");
+      dispatch({ type: 'PLANT_EDIT_RESET' })
+      navigate('/admin/plantList')
     } else {
       if (!plant.name || plant.id !== Number(id)) {
-        dispatch(listPlantDetails(id));
+        dispatch(listPlantDetails(id))
       } else {
-        setName(plant.name);
-        setPrice(plant.price);
-        setImage(plant.image);
-        setDescription(plant.description);
-        setQuantity(plant.quantity);
+        setName(plant.name)
+        setPrice(plant.price)
+        setImage(plant.image)
+        setDescription(plant.description)
+        setQuantity(plant.quantity)
       }
     }
-  }, [plant, id, navigate, dispatch, successfulEdit]);
+  }, [plant, id, navigate, dispatch, successfulEdit])
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = e => {
+    e.preventDefault()
     dispatch(
       editPlant({
         id: id,
@@ -49,37 +49,31 @@ const PlantEditPage = () => {
         description,
         quantity,
       })
-    );
-  };
+    )
+  }
 
-  const handleImgUpload = async (e) => {
-    const img = e.target.files[0];
-    const formData = new FormData();
+  const handleImgUpload = async e => {
+    const img = e.target.files[0]
+    const formData = new FormData()
 
-    console.log(img);
-    console.log(formData);
+    console.log(img)
+    console.log(formData)
 
-    formData.append("image", img);
-    formData.append("plant_id", id);
+    formData.append('image', img)
+    formData.append('plant_id', id)
 
     const config = {
-      headers: { "Content-type": "multipart/form-data" },
-    };
+      headers: { 'Content-type': 'multipart/form-data' },
+    }
 
-    const { data } = await axios.post(
-      "plantshop-backend.herokuapp.com/plants/imgUpload/",
-      formData,
-      config
-    );
-    setImage(data);
-    console.log("uploaded");
-  };
+    const { data } = await axios.post('plantshop-backend.herokuapp.com/plants/imgUpload/', formData, config)
+    setImage(data)
+    console.log('uploaded')
+  }
 
   return (
     <div className="justify-center w-full max-w-lg m-auto mt-[3%] mb-[5%] bg-white border border-gray-200 rounded-lg shadow-md flexp-4 sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-      <h2 className="text-3xl leading-tight font-sm text-neutral-100">
-        Edit Plant ID#: {plant.id}
-      </h2>
+      <h2 className="text-3xl leading-tight font-sm text-neutral-100">Edit Plant ID#: {plant.id}</h2>
       <br></br>
       <br></br>
 
@@ -93,7 +87,7 @@ const PlantEditPage = () => {
             type="text"
             value={name}
             placeholder=""
-            onChange={(e) => setName(e.target.value)}
+            onChange={e => setName(e.target.value)}
             name="floating_email"
             id="floating_email"
             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -110,7 +104,7 @@ const PlantEditPage = () => {
           <input
             type="text"
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={e => setDescription(e.target.value)}
             name="floating_password"
             id="floating_password"
             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -130,7 +124,7 @@ const PlantEditPage = () => {
               type="number"
               value={price}
               placeholder="Enter price"
-              onChange={(e) => setPrice(e.target.value)}
+              onChange={e => setPrice(e.target.value)}
               name="floating_first_name"
               id="floating_first_name"
               class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -155,7 +149,7 @@ const PlantEditPage = () => {
               type="number"
               value={quantity}
               placeholder="Enter price"
-              onChange={(e) => setQuantity(e.target.value)}
+              onChange={e => setQuantity(e.target.value)}
               name="floating_first_name"
               id="floating_first_name"
               class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -190,7 +184,7 @@ const PlantEditPage = () => {
         </button>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default PlantEditPage;
+export default PlantEditPage

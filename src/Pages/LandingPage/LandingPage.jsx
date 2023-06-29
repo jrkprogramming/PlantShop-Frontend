@@ -1,6 +1,6 @@
-import React from "react";
-import "./LandingPage.css";
-import Video from "../../vid/landingpagevideo.mp4";
+import React from 'react'
+import './LandingPage.css'
+import Video from '../../vid/landingpagevideo.mp4'
 
 const LandingPage = () => {
   return (
@@ -28,7 +28,7 @@ const LandingPage = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LandingPage;
+export default LandingPage

@@ -1,12 +1,10 @@
-import axios from "axios";
+import axios from 'axios'
 
 export const addToCart = (id, cartQty) => async (dispatch, getState) => {
-  const { data } = await axios.get(
-    `https://plantshop-backend.herokuapp.com/plants/${id}`
-  );
+  const { data } = await axios.get(`http://localhost:3000/plants/${id}`)
 
   dispatch({
-    type: "CART_ADD_ITEM",
+    type: 'CART_ADD_ITEM',
     payload: {
       plant: data.id,
       name: data.name,
@@ -15,30 +13,30 @@ export const addToCart = (id, cartQty) => async (dispatch, getState) => {
       quantity: data.quantity,
       cartQty,
     },
-  });
-  localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
-};
+  })
+  localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))
+}
 
-export const removeFromCart = (id) => (dispatch, getState) => {
+export const removeFromCart = id => (dispatch, getState) => {
   dispatch({
-    type: "CART_REMOVE_ITEM",
+    type: 'CART_REMOVE_ITEM',
     payload: id,
-  });
-  localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
-};
+  })
+  localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))
+}
 
-export const saveShippingAddress = (data) => (dispatch) => {
+export const saveShippingAddress = data => dispatch => {
   dispatch({
-    type: "CART_SHIPPING_ADDRESS",
+    type: 'CART_SHIPPING_ADDRESS',
     payload: data,
-  });
-  localStorage.setItem("shippingAddress", JSON.stringify(data));
-};
+  })
+  localStorage.setItem('shippingAddress', JSON.stringify(data))
+}
 
-export const savePaymentMethod = (data) => (dispatch) => {
+export const savePaymentMethod = data => dispatch => {
   dispatch({
-    type: "CART_PAYMENT_METHOD",
+    type: 'CART_PAYMENT_METHOD',
     payload: data,
-  });
-  localStorage.setItem("paymentMethod", JSON.stringify(data));
-};
+  })
+  localStorage.setItem('paymentMethod', JSON.stringify(data))
+}
