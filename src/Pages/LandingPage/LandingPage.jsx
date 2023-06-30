@@ -8,7 +8,7 @@ const LandingPage = () => {
       <video src={Video} loop autoPlay muted />
 
       <div className="main">
-        <h2>Plants and Such</h2>
+        <h2>Plants 'N Such</h2>
         <h1>Cultivated by Marinela</h1>
         {/* <p>
           Discover hidden gems, wherever you are. This App is the perfect way to
